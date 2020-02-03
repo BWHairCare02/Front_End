@@ -41,8 +41,14 @@ class EntryPage extends Component {
                   <select className="DropDownTwo">
                       <option value="stylist">Stylist</option>
                       <option value="customer">Customer</option>
-                     
                   </select>
+                  <select>            
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option> 
+                      </select>                 {/* <fieldset id="group1">
+                      <input type="radio" value="" name=""></input>
+                      <input type="radio" value="" name=""></input>
+                  </fieldset> */}
                   <select class="ui search dropdown">
   <option value="">State</option>
   <option value="AL">Alabama</option>
