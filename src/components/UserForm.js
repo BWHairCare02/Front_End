@@ -45,7 +45,7 @@ class EntryPage extends Component {
                   <select>            
                       <option value="Male">Male</option>
                       <option value="Female">Female</option> 
-                      </select>                 {/* <fieldset id="group1">
+                  </select>                 {/* <fieldset id="group1">
                       <input type="radio" value="" name=""></input>
                       <input type="radio" value="" name=""></input>
                   </fieldset> */}
