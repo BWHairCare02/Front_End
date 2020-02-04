@@ -1,7 +1,85 @@
+import React from "react";
+
+function SignUpForm(props) {
+  const handleNewLocation = e => {
+    props.updateLocation(e.target.value);
+  };
+  const handleNewEmail = e => {
+    props.updateEmail(e.target.value);
+  };
+  const handleNewUsername = e => {
+    props.updateSignupUser(e.target.value);
+  };
+  const handleNewPassword = e => {
+    props.updateSignupPass(e.target.value);
+  };
+  const NewDescription = e => {
+    props.updateDescription(e.target.value);
+  };
+  return (
+    <div>
+      SignUpForm
+      <form>
+        <label name="member-location">Location</label>
+        <input
+          type="text"
+          name="member-location"
+          value={props.location}
+          onChange={handleNewLocation}
+        />
+        <label name="member-email">Email</label>
+        <input
+          type="text"
+          name="member-email"
+          value={props.email}
+          onChange={handleNewEmail}
+        />
+        <label name="member-username">Username</label>
+        <input
+          type="text"
+          name="member-username"
+          value={props.signupUsername}
+          onChange={handleNewUsername}
+        />
+        <label name="member-password">Password</label>
+        <input
+          type="password"
+          name="member-password"
+          value={props.signupPassword}
+          onChange={handleNewPassword}
+        />
+        <label name="member-description">Description</label>
+        <input
+          textarea="text"
+          rows="10"
+          cols="30"
+          name="Tell us what you think"
+          value={props.description}
+          onChange={NewDescription}
+        />
+        <button
+          type="button"
+          onClick={() =>
+            props.postMember(
+              props.location,
+              props.email,
+              props.signupUsername,
+              props.signupPassword,
+              props.discription
+            )
+          }
+        >
+          Make a Customer!
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default SignUpForm;
+
 // import React, { Component } from 'react';
 // import '../App.css';
-
-
 
 // class EntryPage extends Component {
 //     constructor(props){
@@ -10,13 +88,13 @@
 //         currentView: "signUp"
 //       }
 //     }
-  
+
 //     changeView = (view) => {
 //       this.setState({
 //         currentView: view
 //       })
 //     }
-  
+
 //     currentView = () => {
 //       switch(this.state.currentView) {
 //         case "signUp":
@@ -41,7 +119,7 @@
 //                   <select className="DropDownTwo">
 //                       <option value="stylist">Stylist</option>
 //                       <option value="customer">Customer</option>
-                     
+
 //                   </select>
 //                   <select class="ui search dropdown">
 //   <option value="">State</option>
@@ -124,7 +202,7 @@
 //                    <select className="DropDown">
 //                       <option value="stylist">Stylist</option>
 //                       <option value="customer">Customer</option>
-                     
+
 //                   </select>
 //                     {/* <label for="password">Password:</label>
 //                     <input type="password" id="password" required/> */}
@@ -164,8 +242,7 @@
 //           break
 //       }
 //     }
-  
-  
+
 //     render() {
 //       return (
 //         <section id="entry-page">
