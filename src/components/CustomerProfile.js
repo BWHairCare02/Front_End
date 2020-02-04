@@ -36,13 +36,13 @@ function SignUpForm(props) {
             onChange={handleNewUsername}
           />
 
-        <label name='stylist-username'>Stylist Name</label>
+        {/* <label name='stylist-username'>Stylist Name</label>
           <input className='CustomerProfile'
             type='text'
             name='member-username'
             value={props.stylesid}
             onChange={StylistId}
-          />
+          /> */}
            <label name='member-email'>Email</label>
           <input className='CustomerProfile'
             type='text'
@@ -57,14 +57,14 @@ function SignUpForm(props) {
             value={props.signupPassword}
             onChange={handleNewPassword}
           /> */}
-            <label name='member-location'>Location Search</label>
+            <label name='member-location'>Search Stylist</label>
           <input className='CustomerProfile'
             type='text'
             name='member-location'
-            placeholder='Location Search...'
+            placeholder='Search Stylist...'
             value={props.location}
             onChange={handleNewLocation}
-          /><br></br><button type="submit">Search In Your Area</button><br></br>
+          /><br></br><button type="submit">Search Stylist In Your Area</button><br></br>
           <label name='member-discription'>Discription</label><br></br>
           <textarea
             type='text'

@@ -28,13 +28,13 @@ function SignUpForm(props) {
         Stylist Profile
         <form>
          
-         <label name='member-username'>Username</label>
+         {/* <label name='member-username'>Username</label>
           <input className='CustomerProfile'
             type='text'
             name='member-username'
             value={props.signupUsername}
             onChange={handleNewUsername}
-          />
+          /> */}
 
         <label name='stylist-username'>Stylist Name</label>
           <input className='CustomerProfile'
@@ -43,13 +43,13 @@ function SignUpForm(props) {
             value={props.stylesid}
             onChange={StylistId}
           />
-           <label name='member-email'>Email</label>
+           {/* <label name='member-email'>Email</label>
           <input className='CustomerProfile'
             type='text'
             name='member-email'
             value={props.email}
             onChange={handleNewEmail}
-          />
+          /> */}
           {/* <label name='member-password'>Password</label>
           <input
             type='password'
@@ -57,15 +57,15 @@ function SignUpForm(props) {
             value={props.signupPassword}
             onChange={handleNewPassword}
           /> */}
-            <label name='member-location'>Location Search</label>
+            <label name='member-location'>Search Stylist</label>
           <input className='CustomerProfile'
             type='text'
             name='member-location'
-            placeholder='Location Search...'
+            placeholder='Search Stylist...'
             value={props.location}
             onChange={handleNewLocation}
-          /><br></br><button type="submit">Search In Your Area</button><br></br>
-          <label name='member-discription'>Discription</label><br></br>
+          /><br></br><button type="submit">Search Stylist In Your Area</button><br></br>
+          {/* <label name='member-discription'>Discription</label><br></br>
           <textarea
             type='text'
             rows='10'
@@ -73,7 +73,7 @@ function SignUpForm(props) {
             name='Tell us what you think'
             value={props.discription}
             onChange={NewDiscription}
-          /><br></br>
+          /><br></br> */}
           {/* <input className="NewPic"
             type='file'
             name='myFile'
@@ -84,7 +84,7 @@ function SignUpForm(props) {
             
           /><input className='PicSubmit' type="submit"></input> */}
 
-          <FileInput className='NewPic' />
+          {/* <FileInput className='NewPic' />
           <button
             type='button'
             onClick={() =>
@@ -100,11 +100,11 @@ function SignUpForm(props) {
             }
           >
             Add
-          </button>
+          </button> */}
           <button
             type='button'
             onClick={() =>
-              props.deleteMember(
+              props.upDateStylist(
                 props.location,
                 props.email,
                 props.signupUsername,
@@ -114,7 +114,7 @@ function SignUpForm(props) {
               )
             }
           >
-            Delete
+            Update Profile
           </button>
         </form>
       </div>
