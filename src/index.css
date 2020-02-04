@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
 * {
   font-family: Jura, Arial;
   font-weight: 400;
@@ -18,6 +19,7 @@ code {
 body {
   margin: 0;
   padding: 0;
+  
 }
 .DropDown{
   align-items: center;
@@ -130,4 +132,12 @@ section#entry-page form button:hover {
   100% {
     background-position: 0% 50%;
  }
+}
+
+
+input{
+  display: flex;
+  font-size: 2rem;
+  margin: 0 auto .5%;
+  border-radius:8px;
 }
