@@ -1,124 +1,67 @@
-import React, { Component } from 'react';
-import '../App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import styled from 'styled-components'
+
+const Container = styled.div`
+  text-align: center;
+  margin-top: 20%;
+`
+
+const Button = styled.button`
+background: transparent;
+border-radius: 3px;
+border: 2px solid rgb(195,116,51);
+color: rgb(195,116,51);
+margin: 0.5em 1em;
+padding: 0.25em 1em;
+font-size: 2rem;
+border-radius:15px;
+`
 
 
 
-class EntryPage extends Component {
-    constructor(props){
-      super(props)
-      this.state = {
-        currentView: "signUp"
-      }
-    }
-  
-    changeView = (view) => {
-      this.setState({
-        currentView: view
+const Login = props => {
+  const [login, setLogin] = useState({ username: '', password: '' });
+  const handleChange = event => {
+    setLogin({
+      ...login,
+      [event.target.name]: event.target.value
+    });
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .post('http://localhost:5000/api/login', login)
+      .then(response => {
+        console.log(console.log('login response', response.data));
+        localStorage.setItem('token', response.data.payload);
+        props.history.push('/bubble-page');
       })
-    }
-  
-    currentView = () => {
-      switch(this.state.currentView) {
-        case "signUp":
-          return (
-            <form>
-              <h2>Sign Up!</h2>
-              <fieldset>
-                <legend>Create Account</legend>
-                <ul>
-                  <li>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" required/>
-                  </li>
-                  <li>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required/>
-                  </li>
-                  <li>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" required/>
-                  </li>
-                  <select className="DropDownTwo">
-                      <option value="stylist">Stylist</option>
-                      <option value="customer">Customer</option>
-                     
-                  </select>
-                </ul>
-              </fieldset>
-              <button>Submit</button>
-              <button type="button" onClick={ () => this.changeView("logIn")}>Have an Account?</button>
-            </form>
-          )
-          break
-        case "logIn":
-          return (
-            <form>
-              <h2>Welcome Back!</h2>
-              <fieldset>
-                <legend>Log In</legend>
-                <ul>
-                  <li>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" required/>
-                  </li>
-                  <li>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" required/>
-                  </li>
-                   <li>
-                   {/* <Dropdown clearable options={options} selection /> */}
-                   <select className="DropDown">
-                      <option value="stylist">Stylist</option>
-                      <option value="customer">Customer</option>
-                     
-                  </select>
-                    {/* <label for="password">Password:</label>
-                    <input type="password" id="password" required/> */}
-                  </li>
-                  <li>
-                    <i/>
-                    <a className="FPW" onClick={ () => this.changeView("PWReset")} href="#">Forgot Password?</a>
-                  </li>
-                </ul>
-              </fieldset>
-              <button>Login</button>
-              <button type="button" onClick={ () => this.changeView("signUp")}>Create an Account</button>
-            </form>
-          )
-          break
-        case "PWReset":
-          return (
-            <form>
-            <h2>Reset Password</h2>
-            <fieldset>
-              <legend>Password Reset</legend>
-              <ul>
-                <li>
-                  <em>A reset link will be sent to your inbox!</em>
-                </li>
-                <li>
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" required/>
-                </li>
-              </ul>
-            </fieldset>
-            <button>Send Reset Link</button>
-            <button type="button" onClick={ () => this.changeView("logIn")}>Go Back</button>
-          </form>
-          )
-        default:
-          break
-      }
-    }
-  
-  
-    render() {
-      return (
-        <section id="entry-page">
-          {this.currentView()}
-        </section>
-      )
-    }
-  }
-
-  export default EntryPage
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  return (
+    <Container>
+      <h1>Welcome Please Sign In</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type='text'
+          name='username'
+          placeholder='username'
+          value={login.username}
+          onChange={handleChange}
+        />
+        <input
+          type='password'
+          name='password'
+          placeholder='password'
+          value={login.password}
+          onChange={handleChange}
+        />
+        <Button primary type='submit'>Log In</Button>
+      </form>
+    </Container>
+  );
+};
+export default Login;
