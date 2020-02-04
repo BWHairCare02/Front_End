@@ -16,9 +16,8 @@ import CustomerSignIn from './components/CustomerProfile';
 function App(props) {
   return (
     <div className="App">
-     {/* <Login /> */}
-     <SignUpForm />
-     <Route exact path='/' component={Login} /> 
+     {/* <SignUpForm /> */}
+     {/* <Route exact path='/' component={Login} />  */}
      <CustomerSignIn />
     </div>
   );

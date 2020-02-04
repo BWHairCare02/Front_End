@@ -21,6 +21,15 @@ body {
   padding: 0;
   
 }
+.PicSubmit{
+  color: red;
+}
+
+.NewPic{
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
 .DropDown{
   align-items: center;
 }
@@ -135,7 +144,7 @@ section#entry-page form button:hover {
 }
 
 
-input{
+.CustomerProfile{
   display: flex;
   font-size: 2rem;
   margin: 0 auto .5%;

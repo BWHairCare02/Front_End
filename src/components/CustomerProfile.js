@@ -1,4 +1,5 @@
 import React from 'react';
+import FileInput from './FileInput';
 
 function SignUpForm(props) {
     const handleNewLocation = e => {
@@ -10,53 +11,69 @@ function SignUpForm(props) {
     const handleNewUsername = e => {
       props.updateSignupUser(e.target.value);
     };
-    const handleNewPassword = e => {
-      props.updateSignupPass(e.target.value);
-    };
+    // const handleNewPassword = e => {
+    //   props.updateSignupPass(e.target.value);
+    // };
     const NewDiscription = e => {
       props.updateDiscription(e.target.value);
     };
+    const NewPicUpload = e => {
+      props.NewPic(e.target.value);
+    };
     return (
       <div>
-        SignUpForm
+        Profile
         <form>
-          <label name='member-location'>Location</label>
-          <input
-            type='text'
-            name='member-location'
-            value={props.location}
-            onChange={handleNewLocation}
-          />
-          <label name='member-email'>Email</label>
-          <input
-            type='text'
-            name='member-email'
-            value={props.email}
-            onChange={handleNewEmail}
-          />
-          <label name='member-username'>Username</label>
-          <input
+         
+         <label name='member-username'>Username</label>
+          <input className='CustomerProfile'
             type='text'
             name='member-username'
             value={props.signupUsername}
             onChange={handleNewUsername}
           />
-          <label name='member-password'>Password</label>
+           <label name='member-email'>Email</label>
+          <input className='CustomerProfile'
+            type='text'
+            name='member-email'
+            value={props.email}
+            onChange={handleNewEmail}
+          />
+          {/* <label name='member-password'>Password</label>
           <input
             type='password'
             name='member-password'
             value={props.signupPassword}
             onChange={handleNewPassword}
-          />
-          <label name='member-discription'>Discription</label>
-          <input
-            textarea='text'
+          /> */}
+            <label name='member-location'>Location Search</label>
+          <input className='CustomerProfile'
+            type='text'
+            name='member-location'
+            placeholder='Location Search...'
+            value={props.location}
+            onChange={handleNewLocation}
+          /><br></br><button type="submit">Search In Your Area</button><br></br>
+          <label name='member-discription'>Discription</label><br></br>
+          <textarea
+            type='text'
             rows='10'
-            cols='30'
+            cols='60'
             name='Tell us what you think'
             value={props.discription}
             onChange={NewDiscription}
-          />
+          /><br></br>
+          {/* <input className="NewPic"
+            type='file'
+            name='myFile'
+            name='filename'
+            
+            value={props.uploadpic}
+            onChange={NewPicUpload}
+            
+          /><input className='PicSubmit' type="submit"></input> */}
+
+          <FileInput className='NewPic' />
           <button
             type='button'
             onClick={() =>
@@ -64,12 +81,28 @@ function SignUpForm(props) {
                 props.location,
                 props.email,
                 props.signupUsername,
-                props.signupPassword,
-                props.discription
+                // props.signupPassword,
+                props.discription,
+                props.uploadpic
               )
             }
           >
-            Make a Customer!
+            Add
+          </button>
+          <button
+            type='button'
+            onClick={() =>
+              props.deleteMember(
+                props.location,
+                props.email,
+                props.signupUsername,
+                // props.signupPassword,
+                props.discription,
+                props.uploadpic
+              )
+            }
+          >
+            Delete
           </button>
         </form>
       </div>
