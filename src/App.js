@@ -6,20 +6,20 @@ import './App.css';
 // import ReactDOM from "react-dom";
 // import { Route } from "react-router-dom";
 import { Route } from 'react-router-dom';
-import CustomerSignIn from './components/CustomerSignIn';
+import CustomerSignIn from './components/CustomerProfile';
 // import axios from 'axios';
 
 
 
 
 
-function App() {
+function App(props) {
   return (
     <div className="App">
      {/* <Login /> */}
-     {/* <SignUpForm /> */}
+     <SignUpForm />
      <Route exact path='/' component={Login} /> 
-     {/* <CustomerSignIn /> */}
+     <CustomerSignIn />
     </div>
   );
 }
