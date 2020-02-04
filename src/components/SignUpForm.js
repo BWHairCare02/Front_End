@@ -187,28 +187,28 @@ function SignUpForm(props) {
         SignUpForm
         <form>
           <label name='member-location'>Location</label>
-          <input
+          <input className='CustomerProfile'
             type='text'
             name='member-location'
             value={props.location}
             onChange={handleNewLocation}
           />
           <label name='member-email'>Email</label>
-          <input
+          <input className='CustomerProfile'
             type='text'
             name='member-email'
             value={props.email}
             onChange={handleNewEmail}
           />
           <label name='member-username'>Username</label>
-          <input
+          <input className='CustomerProfile'
             type='text'
             name='member-username'
             value={props.signupUsername}
             onChange={handleNewUsername}
           />
           <label name='member-password'>Password</label>
-          <input
+          <input className='CustomerProfile'
             type='password'
             name='member-password'
             value={props.signupPassword}
@@ -225,7 +225,7 @@ function SignUpForm(props) {
               )
             }
           >
-            Make a Customer!
+            Make Me Customer!
           </button>
         </form>
       </div>

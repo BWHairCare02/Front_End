@@ -6,8 +6,9 @@ import './App.css';
 // import ReactDOM from "react-dom";
 // import { Route } from "react-router-dom";
 import { Route } from 'react-router-dom';
-import CustomerSignIn from './components/CustomerProfile';
+import CustomerProfile from './components/CustomerProfile';
 // import axios from 'axios';
+import StylistForm from './components/StylistForm';
 
 
 
@@ -16,9 +17,10 @@ import CustomerSignIn from './components/CustomerProfile';
 function App(props) {
   return (
     <div className="App">
-     {/* <SignUpForm /> */}
-     {/* <Route exact path='/' component={Login} />  */}
-     <CustomerSignIn />
+     <SignUpForm />
+     <Route exact path='/' component={Login} /> 
+     <CustomerProfile />
+     <StylistForm />
     </div>
   );
 }

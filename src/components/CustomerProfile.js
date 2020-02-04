@@ -20,9 +20,12 @@ function SignUpForm(props) {
     const NewPicUpload = e => {
       props.NewPic(e.target.value);
     };
+    const StylistId = e => {
+      props.NewPic(e.target.value);
+    };
     return (
       <div>
-        Profile
+         Profile
         <form>
          
          <label name='member-username'>Username</label>
@@ -31,6 +34,14 @@ function SignUpForm(props) {
             name='member-username'
             value={props.signupUsername}
             onChange={handleNewUsername}
+          />
+
+        <label name='stylist-username'>Stylist Name</label>
+          <input className='CustomerProfile'
+            type='text'
+            name='member-username'
+            value={props.stylesid}
+            onChange={StylistId}
           />
            <label name='member-email'>Email</label>
           <input className='CustomerProfile'
@@ -83,7 +94,8 @@ function SignUpForm(props) {
                 props.signupUsername,
                 // props.signupPassword,
                 props.discription,
-                props.uploadpic
+                props.uploadpic,
+                props.StylistId
               )
             }
           >
