@@ -21,6 +21,23 @@ body {
   padding: 0;
   
 }
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(228,206,221);
+  color: rgb(195,116,51);
+}
+
+.nav-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
 .PicSubmit{
   color: red;
 }
