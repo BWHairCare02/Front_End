@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 
-import './App.css';
+// import './App.css';
 
-function About() {
-  return (
-    <div>
-     <h1>About</h1>
-    </div>
-  );
-}
+// function About() {
+//   return (
+//     <div>
+//      <h1>About</h1>
+//     </div>
+//   );
+// }
 
-export default About;
+// export default About;

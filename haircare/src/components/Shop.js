@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import './App.css';
+// import './App.css';
 import {Link} from 'react-router-dom';
 
 function Shop() {
@@ -17,18 +17,18 @@ const fetchItems = async () => {
     //     console.log('items',sports.sports['0'].leagues['0'].teams);
     //     setSports(sports.sports['0'].leagues['0'].teams);
 
-    const data = await fetch(`https://haircare-backend-dingo.herokuapp.com/`
+    const data = await fetch(`https://haircare-backend-dingo.herokuapp.com/stylist`
     );
-        const status = await data.json();
-        console.log('item',status);
-        setSports(status.status);
+        const stylist = await data.json();
+        console.log('item');
+        setSports(stylist.stylist);
 }
 
   return (
       <div>
-        {/* {status.map(status =>(
-        <h1 key={status.status}>
-            {status.status} </h1> */}
+        {/* {stylist.map(stylist =>(
+        <h1 key={stylist.stylist.username}>
+            {stylist.stylist.username} </h1> */}
             
         
       
