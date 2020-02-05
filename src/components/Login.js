@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
+import Runs from './Runs';
 
 const Container = styled.div`
   text-align: center;
@@ -59,7 +60,8 @@ const Login = props => {
           value={login.password}
           onChange={handleChange}
         />
-        <Button primary type='submit'>Log In</Button>
+        
+        <Button className="button" primary type='submit'>Log In</Button>
       </form>
     </Container>
   );

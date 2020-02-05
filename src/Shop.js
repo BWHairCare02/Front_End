@@ -7,24 +7,30 @@ useEffect(() => {
     fetchItems();
 }, []);
 
-const [sports, setSports] = useState([]);
+const [stylist, setSports] = useState([]);
 
 
 const fetchItems = async () => {
-    const data = await fetch(`http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams`
+    // const data = await fetch(`http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams`
+    // );
+    //     const sports = await data.json();
+    //     console.log('items',sports.sports['0'].leagues['0'].teams);
+    //     setSports(sports.sports['0'].leagues['0'].teams);
+
+    const data = await fetch(`https://haircare-backend-dingo.herokuapp.com/`
     );
-        const sports = await data.json();
-        console.log('items',sports.sports['0'].leagues['0'].teams);
-        setSports(sports.sports['0'].leagues['0'].teams);
+        const status = await data.json();
+        console.log('item',status);
+        setSports(status.status);
 }
 
   return (
       <div>
-        {sports.map(sports =>(
-        <h1 key={sports.team.displayName}>
-            {sports.team.displayName} <img src={sports.team.logos} alt=""/></h1>
+        {/* {status.map(status =>(
+        <h1 key={status.status}>
+            {status.status} </h1> */}
             
-        // <img src={sports.team.displayName} alt=""/>
+        
       
     ))}
     </div>
