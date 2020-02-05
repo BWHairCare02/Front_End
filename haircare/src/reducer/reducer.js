@@ -34,6 +34,7 @@ const initialState = {
   userInput: {
     username: "",
     password: "",
+    location: "",
     description: " "
   }
 };

@@ -3,6 +3,7 @@ import axios from "axios";
 import axiosAuth from "../axios/axiosAuth";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import {
   stylistFalse,
@@ -158,6 +159,8 @@ const Login = props => {
         <Button primary type="submit">
           Log In
         </Button>
+        <Link to="/signup"> Sign Up</Link>
+        <Link to="/shop"> costumer profile</Link>
       </form>
     </div>
   );
