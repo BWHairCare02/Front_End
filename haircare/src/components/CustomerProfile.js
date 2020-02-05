@@ -1,5 +1,6 @@
 import React from "react";
 import FileInput from "./FileInput";
+import { Link } from "react-router-dom";
 
 function CustomerProfile(props) {
   const handleNewLocation = e => {
@@ -123,6 +124,7 @@ function CustomerProfile(props) {
         >
           Delete
         </button>
+        <Link to="/search"> search stylist</Link>
       </form>
     </div>
   );

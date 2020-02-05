@@ -4,7 +4,6 @@ import {
   postCustomer,
   updateLocation,
   updateEmail,
-  updateLastName,
   updateSignupPass,
   updateSignupUser
 } from "../../actions";
@@ -88,7 +87,7 @@ const mapDispatchToProps = {
   postCustomer,
   updateLocation,
   updateEmail,
-  updateLastName,
+
   updateSignupPass,
   updateSignupUser
 };

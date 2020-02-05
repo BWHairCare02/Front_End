@@ -3,7 +3,7 @@ import FileInput from "../FileInput";
 import { connect } from "react-redux";
 import { stylistFalse } from "../../actions";
 import Login from "../Login";
-
+import { Link } from "react-router-dom";
 import EditStylistForm from "./EditStylistForm";
 
 function StylistForm(props) {
@@ -125,6 +125,7 @@ function StylistForm(props) {
         >
           Update Profile
         </button>
+        <Link to="/search"></Link>
       </form>
     </div>
   );
