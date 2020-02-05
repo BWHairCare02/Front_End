@@ -183,6 +183,7 @@ function StylistSignUpForm(props) {
       <form>
         <label name="member-location">Location</label>
         <input
+          className="CustomerProfile"
           type="text"
           name="member-location"
           value={props.location}
@@ -190,6 +191,7 @@ function StylistSignUpForm(props) {
         />
         <label name="member-email">Email</label>
         <input
+          className="CustomerProfile"
           type="text"
           name="member-email"
           value={props.email}
@@ -197,6 +199,7 @@ function StylistSignUpForm(props) {
         />
         <label name="member-username">Username</label>
         <input
+          className="CustomerProfile"
           type="text"
           name="member-username"
           value={props.signupUsername}
@@ -204,6 +207,7 @@ function StylistSignUpForm(props) {
         />
         <label name="member-password">Password</label>
         <input
+          className="CustomerProfile"
           type="password"
           name="member-password"
           value={props.signupPassword}
@@ -220,20 +224,11 @@ function StylistSignUpForm(props) {
             )
           }
         >
-          Make a Customer!
+          Make Me Customer!
         </button>
       </form>
     </div>
   );
 }
 
-const mapDispatchToProps = {
-  // postMember,
-  updateLocation,
-  updateEmail,
-
-  updateSignupPass,
-  updateSignupUser
-};
-
-export default connect(state => state, mapDispatchToProps)(StylistSignUpForm);
+export default StylistSignUpForm;
