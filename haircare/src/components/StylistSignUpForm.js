@@ -1,13 +1,12 @@
-// import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-
-// import {
-//     updateState,
-//     updateEmail,
-//     updateLastName,
-//     updateSignupPass,
-//     updateSignupUser,
-// } from ‘../../actions’   
+import {
+  updateLocation,
+  updateEmail,
+  updateSignupPass,
+  updateSignupUser
+} from "../actions/index";
 
 // function SignUpForm(props){
 //     const handleNewState = e => {
@@ -38,15 +37,13 @@
 
 //                 export default SignUpForm;
 
-
-
 // import React from 'react';
 
 // class NewBook extends React.Component {
 //     constructor(props){
 //       super(props);
 //       this.handleSubmit = this.handleSubmit.bind(this);
-      
+
 //       this.state = {
 //         message: "",
 //         newbook: {
@@ -58,25 +55,24 @@
 //         }
 //       };
 //     }
-  
+
 //     handleSubmit(e) {
 //       e.preventDefault();
 //       this.setState({ message: 'Sending...' }, this.sendFormData);
 //     }
-  
+
 //   sendFormData() {
 //     var formData = {
 //         Title: this.refs.Title.value,
 //         Author: this.refs.Author.value,
 //         Genre: this.refs.Genre.value}
 //         // YearReleased: this.refs.YearReleased.value};
-//     setTimeout(() => { 
+//     setTimeout(() => {
 //       console.log(formData);
 //       this.setState({ message: 'data sent!' });
 //     }, 3000);
 //   }
-  
-  
+
 //     render () {
 //       return (
 //         <div>
@@ -85,7 +81,7 @@
 //           <form onSubmit={this.handleSubmit}>
 //               <p> <label for="title">First Name</label><input id="title" type="text" ref="Title" /></p>
 //               <p><label for="author">Last Name</label><input id="author" type="text" ref="Author" /></p>
-             
+
 //               <select className="DropDownTwo">
 //                       <option value="stylist">Stylist</option>
 //                       <option value="customer">Customer</option>
@@ -94,11 +90,11 @@
 //                         <input type = "checkbox" name = "maths" value = "on"> </input>
 //                         <input type = "checkbox" name = "physics" value = "on"> </input>
 //                   </form>
-//                   <select>            
+//                   <select>
 //                       <option value="Male">Male</option>
-//                       <option value="Female">Female</option> 
+//                       <option value="Female">Female</option>
 //                   </select>
-             
+
 //          <select class="ui search dropdown">
 //   <option value="">State</option>
 //   <option value="AL">Alabama</option>
@@ -157,7 +153,6 @@
 //             Enter description here...
 //          </textarea></p>
 
-
 //               {/* <p><label for="first_published">First Published</label><input id="first_published" type="text" ref="YearReleased"  /></p> */}
 //               <p><input type="submit" /></p>
 //           </form>
@@ -165,71 +160,75 @@
 //       )
 //     }
 //   }
-  
+
 //   export default NewBook;
-import React from 'react';
+// import React from "react";
 
-function SignUpForm(props) {
-    const handleNewLocation = e => {
-      props.updateLocation(e.target.value);
-    };
-    const handleNewEmail = e => {
-      props.updateEmail(e.target.value);
-    };
-    const handleNewUsername = e => {
-      props.updateSignupUser(e.target.value);
-    };
-    const handleNewPassword = e => {
-      props.updateSignupPass(e.target.value);
-    };
-    return (
-      <div>
-        SignUpForm
-        <form>
-          <label name='member-location'>Location</label>
-          <input className='CustomerProfile'
-            type='text'
-            name='member-location'
-            value={props.location}
-            onChange={handleNewLocation}
-          />
-          <label name='member-email'>Email</label>
-          <input className='CustomerProfile'
-            type='text'
-            name='member-email'
-            value={props.email}
-            onChange={handleNewEmail}
-          />
-          <label name='member-username'>Username</label>
-          <input className='CustomerProfile'
-            type='text'
-            name='member-username'
-            value={props.signupUsername}
-            onChange={handleNewUsername}
-          />
-          <label name='member-password'>Password</label>
-          <input className='CustomerProfile'
-            type='password'
-            name='member-password'
-            value={props.signupPassword}
-            onChange={handleNewPassword}
-          />
-          <button
-            type='button'
-            onClick={() =>
-              props.postMember(
-                props.location,
-                props.email,
-                props.signupUsername,
-                props.signupPassword
-              )
-            }
-          >
-            Make Me Customer!
-          </button>
-        </form>
-      </div>
-    );
-  }
+function StylistSignUpForm(props) {
+  const handleNewLocation = e => {
+    props.updateLocation(e.target.value);
+  };
+  const handleNewEmail = e => {
+    props.updateEmail(e.target.value);
+  };
+  const handleNewUsername = e => {
+    props.updateSignupUser(e.target.value);
+  };
+  const handleNewPassword = e => {
+    props.updateSignupPass(e.target.value);
+  };
+  return (
+    <div>
+      SignUpForm
+      <form>
+        <label name="member-location">Location</label>
+        <input
+          className="CustomerProfile"
+          type="text"
+          name="member-location"
+          value={props.location}
+          onChange={handleNewLocation}
+        />
+        <label name="member-email">Email</label>
+        <input
+          className="CustomerProfile"
+          type="text"
+          name="member-email"
+          value={props.email}
+          onChange={handleNewEmail}
+        />
+        <label name="member-username">Username</label>
+        <input
+          className="CustomerProfile"
+          type="text"
+          name="member-username"
+          value={props.signupUsername}
+          onChange={handleNewUsername}
+        />
+        <label name="member-password">Password</label>
+        <input
+          className="CustomerProfile"
+          type="password"
+          name="member-password"
+          value={props.signupPassword}
+          onChange={handleNewPassword}
+        />
+        <button
+          type="button"
+          onClick={() =>
+            props.postMember(
+              props.location,
+              props.email,
+              props.signupUsername,
+              props.signupPassword
+            )
+          }
+        >
+          Make Me Customer!
+        </button>
+      </form>
+    </div>
+  );
+}
 
-export default  SignUpForm;
+export default StylistSignUpForm;
