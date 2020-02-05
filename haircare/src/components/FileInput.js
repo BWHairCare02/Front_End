@@ -1,27 +1,20 @@
-import React from 'react';
-
+import React from "react";
 
 class FileInput extends React.Component {
-    constructor(props) {
-      // highlight-range{3}
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.fileInput = React.createRef();
-    }
-    handleSubmit(event) {
-      // highlight-range{4}
-      event.preventDefault();
-      alert(
-        `Selected file - ${
-          this.fileInput.current.files[0].name
-        }`
-      );
-    }
-  
-    render() {
-      // highlight-range{5}
-      return (
-        <div className='NewPic'>
+  constructor(props) {
+    // highlight-range{3}
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileInput = React.createRef();
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    alert(`Selected file - ${this.fileInput.current.files[0].id}`);
+  }
+
+  render() {
+    return (
+      <div className="NewPic">
         <form onSubmit={this.handleSubmit}>
           <label>
             Upload file:
@@ -29,10 +22,10 @@ class FileInput extends React.Component {
           </label>
           <br />
           <button type="submit">Submit File</button>
-        </form></div>
-      );
-    }
+        </form>
+      </div>
+    );
   }
-  
+}
+
 export default FileInput;
-  

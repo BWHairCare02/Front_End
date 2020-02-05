@@ -12,9 +12,6 @@ function CustomerProfile(props) {
   const handleNewUsername = e => {
     props.updateSignupUser(e.target.value);
   };
-  // const handleNewPassword = e => {
-  //   props.updateSignupPass(e.target.value);
-  // };
   const NewDescription = e => {
     props.updateDescription(e.target.value);
   };
@@ -36,14 +33,6 @@ function CustomerProfile(props) {
           value={props.signupUsername}
           onChange={handleNewUsername}
         />
-
-        {/* <label name='stylist-username'>Stylist Name</label>
-          <input className='CustomerProfile'
-            type='text'
-            name='customer-username'
-            value={props.stylesid}
-            onChange={StylistId}
-          /> */}
         <label name="customer-email">Email</label>
         <input
           className="customerProfile"
@@ -76,15 +65,6 @@ function CustomerProfile(props) {
           onChange={NewDescription}
         />
         <br></br>
-        {/* <input className="NewPic"
-            type='file'
-            name='myFile'
-            name='filename'
-            
-            value={props.uploadpic}
-            onChange={NewPicUpload}
-            
-          /><input className='PicSubmit' type="submit"></input> */}
 
         <FileInput className="NewPic" />
         <button

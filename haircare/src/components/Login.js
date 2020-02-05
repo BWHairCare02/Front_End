@@ -109,27 +109,7 @@ const Login = props => {
 
   const inputName = props.admin === false ? "stylist" : "username";
   const inputPass = props.admin === false ? "passStylist" : "password";
-  // const Login = props =>
-  //  const [login, setLogin] = useState({ username: "", password: "" });
-  // const handleChange = event => {
-  //   setLogin({
-  //     ...login,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   axios
-  //     .post("http://localhost:5000/api/login", login)
-  //     .then(response => {
-  //       console.log(console.log("login response", response.data));
-  //       localStorage.setItem("token", response.data.payload);
-  //       props.history.push("/bubble-page");
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
+
   return (
     // <Container>
     <div>

@@ -2,55 +2,100 @@ import axios from "axios";
 import axiosWithAuth from "../axios/axiosAuth";
 
 //////////////////////////// SIGNUP /////////////////////////////////////////////////
-export const SIGNUP_USERNAME = "SIGNUP_USERNAME";
-export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD";
-export const signupUser = data => ({ type: SIGNUP_USERNAME, payload: data });
-export const signupPass = data => ({ type: SIGNUP_PASSWORD, payload: data });
+export const SIGNUP_USERNAME = "SIGNUP_USERNAME"; /// SIGNUP /////
+export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD"; /// SIGNUP /////
+export const STYLIST_PASS = "STYLIST_PASS"; /// STYLIST /////
+export const STYLIST_USER = "STYLIST_USER"; /// STYLIST /////
+export const NOT_STYLIST = "NOT_STYLIST"; /// STYLIST /////
+export const STYLIST = "STYLIST"; /// STYLIST /////
+export const MAKE_CUSTOMER = "MAKE_CUSTOMER"; /// CUSTOMER /////
+export const LOCATION_CUSTOMER = "LOCATION_CUSTOMER"; /// CUSTOMER /////
+export const PASSWORD_CUSTOMER = "PASSWORD_CUSTOMER"; /// CUSTOMER /////
+export const EMAIL_CUSTOMER = "EMAIL_CUSTOMER"; /// CUSTOMER /////
+export const USERNAME_CUSTOMER = "USERNAME_CUSTOMER"; /// CUSTOMER /////
+export const LOAD_CUSTOMER_SUCCESS = "LOAD_CUSTOMER_SUCCESS"; /// CUSTOMER /////
+export const LOAD_CUSTOMER_FAILURE = "LOAD_CUSTOMER_FAILURE"; /// CUSTOMER /////
+export const LOADING_CUSTOMER = "LOADING_CUSTOMER"; /// CUSTOMER /////
+export const SUCCESS = "SUCCESS";
+export const DESCRIPTION = "DESCRIPTION"; /// DESCRIPTION /////
+export const LOAD_STYLIST_SUCCESS = "LOAD_STYLIST_SUCCESS"; /// STYLIST /////
+export const LOAD_STYLIST_FAILURE = "LOAD_STYLIST_FAILURE"; /// STYLIST /////
+export const LOADING_STYLIST = "LOADING_STYLIST"; /// STYLIST /////
 
-export const MAKE_CUSTOMER = "MAKE_CUSTOMER";
-export const customerMaking = data => ({ type: MAKE_CUSTOMER, payload: data });
-
-/////////////////////////// COSTUMERS/////////////////////////////////////////
-
-export const LOCATION_CUSTOMER = "LOCATION_CUSTOMER";
+export const description = data => ({ type: DESCRIPTION, payload: data }); /// DESCRIPTION /////
+export const signupUser = data => ({ type: SIGNUP_USERNAME, payload: data }); /// SIGNUP USER /////
+export const signupPass = data => ({ type: SIGNUP_PASSWORD, payload: data }); /// SIGNUP PASS /////
+export const updateSignupUser = data => dispatch => {
+  dispatch(signupUser(data)); /// UPDATE SIGNUP USER/////
+};
+export const updateSignupPass = data => dispatch => {
+  dispatch(signupPass(data)); /// UPDATE SIGNUP PASS/////
+};
+export const customerMaking = data => ({ type: MAKE_CUSTOMER, payload: data }); ///MAKING CUSTOMER/////
 export const customerLocation = data => ({
   type: LOCATION_CUSTOMER,
-  payload: data
+  payload: data /// CUSTOMER LOCATION/////
 });
-export const USERNAME_CUSTOMER = "USERNAME_CUSTOMER";
 export const customerUserName = data => ({
   type: USERNAME_CUSTOMER,
-  payload: data
+  payload: data /// CUSTOMER USER/////
 });
-export const EMAIL_CUSTOMER = "EMAIL_CUSTOMER";
-export const customerEmail = data => ({ type: EMAIL_CUSTOMER, payload: data });
-export const PASSWORD_CUSTOMER = "PASSWORD_CUSTOMER";
+export const customerEmail = data => ({ type: EMAIL_CUSTOMER, payload: data }); /// CUSTOMER EMAIL /////
 export const customerPassWord = data => ({
   type: PASSWORD_CUSTOMER,
-  payload: data
+  payload: data /// CUSTOMER PASS /////
 });
-
-export const LOAD_CUSTOMER_SUCCESS = "LOAD_CUSTOMER_SUCCESS";
-
-export const LOAD_CUSTOMER_FAILURE = "LOAD_CUSTOMER_FAILURE";
-
-export const LOADING_CUSTOMER = "LOADING_CUSTOMER";
 export const customerSuccess = data => ({
   type: LOAD_CUSTOMER_SUCCESS,
-  payload: data
+  payload: data /// CUSTOMER LOAD SUCCESS /////
 });
-
 export const customerFailure = error => ({
   type: LOAD_CUSTOMER_FAILURE,
-  payload: error
+  payload: error /// CUSTOMER LOAD FAILURE/////
 });
-
-export const customerLoading = () => ({ type: LOADING_CUSTOMER });
-
-export const SUCCESS = "SUCCESS";
-export const successLoad = () => ({ type: SUCCESS });
+export const customerLoading = () => ({ type: LOADING_CUSTOMER }); /// CUSTOMER LOADING/////
+export const successLoad = () => ({ type: SUCCESS }); /// SUCCESS/////
+export const updateLocation = location => dispatch => {
+  dispatch(customerLocation(location)); /// CUSTOMER LOCATION/////
+};
+export const updateEmail = email => dispatch => {
+  dispatch(customerEmail(email)); /// UPDATE EMAIL/////
+};
+export const updateUserName = username => dispatch => {
+  dispatch(customerUserName(username)); /// UPDATE USER/////
+};
+export const updatePassWord = password => dispatch => {
+  dispatch(customerPassWord(password)); /// UPDATE PASS/////
+};
+export const stylistUser = data => ({ type: STYLIST_USER, payload: data }); /// STYLIST USER/////
+export const stylistPass = data => ({ type: STYLIST_PASS, payload: data }); /// STYLIST PASS/////
+export const customer = () => ({ type: NOT_STYLIST }); /// NOT A STYLIST/////
+export const stylist = () => ({ type: STYLIST }); /// STYLIST USER/////
+export const stylistFalse = () => dispatch => {
+  dispatch(customer()); /// STYLIST FALSE/////
+};
+export const stylistTrue = () => dispatch => {
+  dispatch(stylist()); /// STYLIST TRUE/////
+};
+export const updateStylistPass = password => dispatch => {
+  dispatch(stylistPass(password)); ///  UPDATE STYLIST PASS/////
+};
+export const updateStylistUser = username => dispatch => {
+  dispatch(stylistUser(username)); /// UPDATE STYLIST USER/////
+};
+export const stylistSuccess = data => ({
+  type: LOAD_STYLIST_SUCCESS,
+  payload: data /// STYLIST SUCCESS/////
+});
+export const stylistFailure = error => ({
+  type: LOAD_STYLIST_FAILURE,
+  payload: error /// STYLIST FAILURE/////
+});
+export const stylistLoading = () => ({ type: LOADING_STYLIST }); /// LOADING STYLIST/////
 
 const authAxios = axiosWithAuth();
+
+/////////////////////////////////// Customer Calls //////////////////////////
 
 export const fetchCustomers = () => dispatch => {
   dispatch(customerLoading());
@@ -117,81 +162,6 @@ export const putCustomer = (
       //dispatch(customerFailure(error.message))
     });
 };
-
-///////////////// UPDATES/////////////////////////////////////////////////////////////////
-
-export const updateLocation = location => dispatch => {
-  dispatch(customerLocation(location));
-};
-
-export const updateEmail = email => dispatch => {
-  dispatch(customerEmail(email));
-};
-
-export const updateUserName = username => dispatch => {
-  dispatch(customerUserName(username));
-};
-export const updatePassWord = password => dispatch => {
-  dispatch(customerPassWord(password));
-};
-
-////////////////// SIGNUP UPDATES ///////////////////////////////////////////////////////
-export const updateSignupUser = data => dispatch => {
-  dispatch(signupUser(data));
-};
-export const updateSignupPass = data => dispatch => {
-  dispatch(signupPass(data));
-};
-// //////DESCRIPTIONS ///////// BOTH//////////////////////////////////////////////////////
-export const description = data => ({ type: DESCRIPTION, payload: data });
-export const DESCRIPTION = "DESCRIPTION";
-// export const updateLocation = data => dispatch => {
-//   dispatch(costumerLocation(data));
-// };
-//////////////////////// STYLIST ////////////////////////////////////////////////////////
-export const stylistUser = data => ({ type: STYLIST_USER, payload: data });
-export const stylistPass = data => ({ type: STYLIST_PASS, payload: data });
-export const STYLIST_PASS = "STYLIST_PASS";
-export const STYLIST_USER = "STYLIST_USER";
-
-export const NOT_STYLIST = "NOT_STYLIST";
-
-export const STYLIST = "STYLIST";
-export const customer = () => ({ type: NOT_STYLIST });
-
-export const stylist = () => ({ type: STYLIST });
-
-export const stylistFalse = () => dispatch => {
-  dispatch(customer());
-};
-
-export const stylistTrue = () => dispatch => {
-  dispatch(stylist());
-};
-
-/////////////////UPDATE STYLIST//////////////////////////////////////////////////////////////
-export const updateStylistPass = password => dispatch => {
-  dispatch(stylistPass(password));
-};
-export const updateStylistUser = username => dispatch => {
-  dispatch(stylistUser(username));
-};
-
-///////////////////////// Stylist Info//////////////////////////////////////////////////////////
-export const LOAD_STYLIST_SUCCESS = "LOAD_STYLIST_SUCCESS";
-
-export const LOAD_STYLIST_FAILURE = "LOAD_STYLIST_FAILURE";
-export const LOADING_STYLIST = "LOADING_STYLIST";
-
-export const stylistSuccess = data => ({
-  type: LOAD_STYLIST_SUCCESS,
-  payload: data
-});
-export const stylistFailure = error => ({
-  type: LOAD_STYLIST_FAILURE,
-  payload: error
-});
-export const stylistLoading = () => ({ type: LOADING_STYLIST });
 export const fetchStylist = () => dispatch => {
   authAxios
     .get("/stylist")
