@@ -58,7 +58,7 @@ const MapSearch = () => {
   return (
     <div className="search-map">
       <img
-        style={{ "-webkit-user-select": "none", margin: "auto" }}
+        style={{ "-webkit-user-select": "none",margin: "auto"}}
         src="https://www.cssportal.com/form-elements/images/search.png"
       ></img>
       <ReactMapGl

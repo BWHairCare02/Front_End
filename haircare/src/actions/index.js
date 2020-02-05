@@ -56,7 +56,7 @@ export const fetchCustomers = () => dispatch => {
   dispatch(customerLoading());
   authAxios
     //   fix users below
-    .get("/users")
+    .get("/customer/:customerId")
     .then(res => {
       console.log("this is customers response.data", res);
       dispatch(customerSuccess(res.data));
@@ -76,7 +76,7 @@ export const postCustomer = (
 ) => dispatch => {
   dispatch(customerLoading());
   authAxios
-    .post("/auth/register", {
+    .post("/customer/register", {
       state: locationCustomer,
       email: emailCustomer,
       username: signupUsername,
@@ -101,7 +101,7 @@ export const putCustomer = (
 ) => dispatch => {
   dispatch(customerLoading());
   authAxios
-    .post(`/user/${id} `, {
+    .post(`https://haircare-backend-dingo.herokuapp.com/customer/login${id} `, {
       state: locationCustomer,
       email: emailCustomer,
       username: signupUsername,
@@ -194,7 +194,7 @@ export const stylistFailure = error => ({
 export const stylistLoading = () => ({ type: LOADING_STYLIST });
 export const fetchStylist = () => dispatch => {
   authAxios
-    .get("/users")
+    .get("/stylist")
     .then(res => {
       console.log("this is response.data", res);
       dispatch(stylistSuccess(res.data));
@@ -209,7 +209,7 @@ export const postStylist = (username, password, description) => dispatch => {
   dispatch(stylistLoading());
 
   authAxios
-    .post("/stylist", {
+    .post("/stylist/register", {
       STYLIST_USER: username,
       STYLIST_PASS: password,
       DESCRIPTION: description
@@ -229,7 +229,7 @@ export const putStylist = (username, password, description, id) => dispatch => {
 
   authAxios
     .put(
-      `/schools/${id}`, ///ENTER THE SPECIFIC ID?
+      `/stylist/:stylistId${id}`, ///ENTER THE SPECIFIC ID?
       {
         about: description,
         STYLIST_USER: username,
@@ -244,4 +244,13 @@ export const putStylist = (username, password, description, id) => dispatch => {
     .catch(error => {
       console.log("this is error", error.message);
     });
+};
+
+export const deleteStylist = id => dispatch => {
+  authAxios
+    .delete(`/stylist/:stylistId${id}`)
+    .then(res => {
+      console.log("this is delete stylist", res);
+    })
+    .catch(err => console.log("this is delete user error", err));
 };

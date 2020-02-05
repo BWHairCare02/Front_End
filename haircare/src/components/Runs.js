@@ -6,7 +6,7 @@
 // import Shop from '../Shop';
 // import Login from './Login';
 // import StylistForm from './Stylist/StylistForm';
-// import CustomerProfile from './CustomerProfile';
+// import file from './CustomerProfile';
 
 // class Routes extends Component {
 

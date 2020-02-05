@@ -15,8 +15,8 @@ function CustomerProfile(props) {
   // const handleNewPassword = e => {
   //   props.updateSignupPass(e.target.value);
   // };
-  const NewDiscription = e => {
-    props.updateDiscription(e.target.value);
+  const NewDescription = e => {
+    props.updateDescription(e.target.value);
   };
   const NewPicUpload = e => {
     props.NewPic(e.target.value);
@@ -28,11 +28,11 @@ function CustomerProfile(props) {
     <div>
       Profile
       <form>
-        <label name="member-username">Username</label>
+        <label name="customer-username">Username</label>
         <input
-          className="CustomerProfile"
+          className="customerProfile"
           type="text"
-          name="member-username"
+          name="customer-username"
           value={props.signupUsername}
           onChange={handleNewUsername}
         />
@@ -40,30 +40,24 @@ function CustomerProfile(props) {
         {/* <label name='stylist-username'>Stylist Name</label>
           <input className='CustomerProfile'
             type='text'
-            name='member-username'
+            name='customer-username'
             value={props.stylesid}
             onChange={StylistId}
           /> */}
-        <label name="member-email">Email</label>
+        <label name="customer-email">Email</label>
         <input
-          className="CustomerProfile"
+          className="customerProfile"
           type="text"
-          name="member-email"
+          name="customer-email"
           value={props.email}
           onChange={handleNewEmail}
         />
-        {/* <label name='member-password'>Password</label>
-          <input
-            type='password'
-            name='member-password'
-            value={props.signupPassword}
-            onChange={handleNewPassword}
-          /> */}
-        <label name="member-location">Search Stylist</label>
+
+        <label name="customer-location">Search Stylist</label>
         <input
           className="CustomerProfile"
           type="text"
-          name="member-location"
+          name="customer-location"
           placeholder="Search Stylist..."
           value={props.location}
           onChange={handleNewLocation}
@@ -71,15 +65,15 @@ function CustomerProfile(props) {
         <br></br>
         <button type="submit">Search Stylist In Your Area</button>
         <br></br>
-        <label name="member-discription">Discription</label>
+        <label name="customer-description">Description</label>
         <br></br>
         <textarea
           type="text"
           rows="10"
           cols="60"
           name="Tell us what you think"
-          value={props.discription}
-          onChange={NewDiscription}
+          value={props.description}
+          onChange={NewDescription}
         />
         <br></br>
         {/* <input className="NewPic"
@@ -101,7 +95,7 @@ function CustomerProfile(props) {
               props.email,
               props.signupUsername,
               // props.signupPassword,
-              props.discription,
+              props.description,
               props.uploadpic,
               props.StylistId
             )
@@ -116,8 +110,7 @@ function CustomerProfile(props) {
               props.location,
               props.email,
               props.signupUsername,
-              // props.signupPassword,
-              props.discription,
+              props.description,
               props.uploadpic
             )
           }

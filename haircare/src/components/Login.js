@@ -41,7 +41,7 @@ const Login = props => {
   const login = payload => {
     const authAxios = axiosAuth();
     authAxios
-      .post(`/auth/login`, payload)
+      .post(`http://localhost:5000/api/login`, payload)
       .then(res => {
         console.log("this is res.data", res);
         localStorage.setItem("token", res.data.token);
