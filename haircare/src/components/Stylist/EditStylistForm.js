@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
-  putCustomer,
+  putStylist,
   updateLocation,
   updateEmail,
   updateSignupPass,
   updateSignupUser
-} from "../actions/index";
+} from "../../actions/index";
 
 function EditStylistForm(props) {
   const handleNewLocation = e => {
@@ -90,7 +90,7 @@ function EditStylistForm(props) {
 }
 
 const mapDispatchToProps = {
-  // postCustomer,
+  putStylist,
   updateLocation,
   updateEmail,
   updateSignupPass,
