@@ -20,7 +20,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  members: [
+  costumers: [
     //{"username":"skye","location":California,"email":"skyet@gmail.com","id":1234}
   ],
   isFetching: false,
@@ -89,8 +89,6 @@ export function reducer(state = initialState, action) {
         error: null
       };
 
-   
-
     case PASSWORD_CUSTOMER:
       return {
         ...state,
@@ -156,14 +154,14 @@ export function reducer(state = initialState, action) {
     case LOAD_STYLIST_FAILURE:
       return {
         ...state,
-        userInput: [...state.userInput],
+        userInput: { ...state.userInput },
         isFetching: false,
         error: action.payload
       };
     case LOADING_STYLIST:
       return {
         ...state,
-        userInput: [...state.userInput],
+        userInput: { ...state.userInput },
         isFetching: true,
         error: null
       };

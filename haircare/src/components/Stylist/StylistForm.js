@@ -1,5 +1,10 @@
-import React from "react";
-import FileInput from "./FileInput";
+import React, { useState } from "react";
+import FileInput from "../FileInput";
+import { connect } from "react-redux";
+import { stylistFalse } from "../../actions";
+import Login from "../Login";
+
+import EditStylistForm from "./EditStylistForm";
 
 function StylistForm(props) {
   const handleNewLocation = e => {
@@ -14,8 +19,8 @@ function StylistForm(props) {
   // const handleNewPassword = e => {
   //   props.updateSignupPass(e.target.value);
   // };
-  const NewDiscription = e => {
-    props.updateDiscription(e.target.value);
+  const NewDescription = e => {
+    props.updateDescription(e.target.value);
   };
   const NewPicUpload = e => {
     props.NewPic(e.target.value);
@@ -113,7 +118,7 @@ function StylistForm(props) {
               props.email,
               props.signupUsername,
               // props.signupPassword,
-              props.discription,
+              props.description,
               props.uploadpic
             )
           }
@@ -125,4 +130,9 @@ function StylistForm(props) {
   );
 }
 
-export default StylistForm;
+// export default StylistForm;
+const mapDispatchToProps = {
+  stylistFalse
+};
+
+export default connect(state => state, mapDispatchToProps)(StylistForm);
