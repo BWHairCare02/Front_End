@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import FileInput from '../FileInput';
 import {
   postCustomer,
   updateLocation,
@@ -7,86 +9,69 @@ import {
   updateSignupPass,
   updateSignupUser
 } from "../../actions";
+class CustomerSignUpForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      submitted: false,
+    };
+  this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+      this.setState({
+      submitted: true,
+    });
+  }
+  render() {
+    if (this.state.submitted) {
+      return (
+      <h1>Thanks for contacting us</h1>
+      );
+    } else {
+      return (
+        
+      <form action="send_mail" method="post">
+        {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} profile
+        <div><input type="text" name="customer-username" required></input>
+            <label for="email">Username</label></div>
 
-function CustomerSignUpForm(props) {
-  const handleNewLocation = e => {
-    props.updateLocation(e.target.value);
-  };
-  const handleNewEmail = e => {
-    props.updateEmail(e.target.value);
-  };
-  const handleNewUsername = e => {
-    props.updateSignupUser(e.target.value);
-  };
-  const handleNewPassword = e => {
-    props.updateSignupPass(e.target.value);
-  };
-  const NewDescription = e => {
-    props.updateDescription(e.target.value);
-  };
-  return (
-    <div>
-      SignUpForm
-      <form>
-        <label name="customer-location">Location</label>
-        <input
-          className="SignUpCustomer"
-          type="text"
-          name="customer-location"
-          value={props.location}
-          onChange={handleNewLocation}
-        />
-        <label name="customer-email">Email</label>
-        <input
-          className="SignUpCustomer"
-          type="text"
-          name="customer-email"
-          value={props.email}
-          onChange={handleNewEmail}
-        />
-        <label name="customer-username">Username</label>
-        <input
-          className="SignUpCustomer"
-          type="text"
-          name="customer-username"
-          value={props.signupUsername}
-          onChange={handleNewUsername}
-        />
-        <label name="customer-password">Password</label>
-        <input
-          className="SignUpCustomer"
-          type="password"
-          name="customer-password"
-          value={props.signupPassword}
-          onChange={handleNewPassword}
-        />
-        <label name="customer-description">Description</label>
-        <input
-          className="SignUpCustomer"
-          textarea="text"
-          rows="10"
-          cols="30"
-          name="Tell us what you think"
-          value={props.description}
-          onChange={NewDescription}
-        />
-        <button
-          type="button"
-          onClick={() =>
-            props.postCustomer(
-              props.location,
-              props.email,
-              props.signupUsername,
-              props.signupPassword,
-              props.description
-            )
-          }
-        >
-          Make a Customer!
+        <div>
+          <input type="text" name="customer-email" required></input>
+      	  <label for="email">Email</label>
+      </div>
+
+      <div>
+        <input type="text" name="customer-description" placeholder="Search Stylist..." required></input>
+        <label for="message">Search Stylist</label>
+      </div> <button type="submit">Search Stylist In Your Area</button>
+          {/* <div><input type="text" name="customer-username" required></input>
+            <label for="email">Username</label></div> */}
+
+          {/* <div><input type="password" name="customer-password" required></input>
+            <label for="email">Password</label></div> */}
+          
+      <div>
+        <textarea type="text" name="customer-description" required></textarea>
+        <label for="message">Description</label>
+      </div>
+      <FileInput />
+      <div>
+        <button onClick={this.handleClick} type="submit">
+        	<i class="material-icons">Update Profile</i>
         </button>
-      </form>
-    </div>
-  );
+        <Link to="/search"> search stylist</Link>
+        <button onClick={this.handleClick} type="submit">
+        	<i class="material-icons">add</i>
+        </button>
+        <button onClick={this.handleClick} type="submit">
+        	<i class="material-icons">delete</i>
+        </button>
+        
+      </div>
+    </form>
+    )
+    }
+  }
 }
 const mapDispatchToProps = {
   postCustomer,

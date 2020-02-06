@@ -6,7 +6,7 @@ import CustomerSignUpForm from "./CustomerSignUpForm";
 export default function signUp() {
   return (
     <div>
-      SignUp
+      
       <CustomerSignUpForm />
     </div>
   );

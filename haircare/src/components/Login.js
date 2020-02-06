@@ -139,6 +139,9 @@ const Login = props => {
         <Button primary type="submit">
           Log In
         </Button>
+        <Button primary type="submit">
+          Sign Up
+        </Button>
         <Link to="/signup"> Sign Up</Link>
         <Link to="/shop"> costumer profile</Link>
       </form>

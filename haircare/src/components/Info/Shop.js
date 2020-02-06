@@ -1,34 +1,34 @@
-// import React, { useState, useEffect} from 'react';
-// import './App.css';
-// import {Link} from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
 
-// function Shop() {
-// useEffect(() => {
-//     fetchItems();
-// }, []);
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
-// const [sports, setSports] = useState([]);
+class Shop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {repos: []};
+  }
 
-
-// const fetchItems = async () => {
-//     const data = await fetch(`http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams`
-//     );
-//         const sports = await data.json();
-//         console.log('items',sports.sports['0'].leagues['0'].teams);
-//         setSports(sports.sports['0'].leagues['0'].teams);
-// }
-
-//   return (
-//       <div>
-//         {sports.map(sports =>(
-//         <h1 key={sports.team.displayName}>
-//             {sports.team.displayName} <img src={sports.team.logos} alt=""/></h1>
-            
-//         // <img src={sports.team.displayName} alt=""/>
+  componentDidMount() {
+    axios.get('https://haircare-backend-dingo.herokuapp.com/stylist')
+      .then(response =>  this.setState
+        
+           ({ repos: response.data }))
       
-//     ))}
-//     </div>
-//   );
-// }
+      .catch(error => console.log(error));
+      console.log('hi')
+  }
 
-// export default Shop;
+  render() {
+    return (
+      <div>
+        <h1>Meet Our Stylist</h1>
+        {this.state.repos.map(repo =>
+          <div key={repo.id}>{repo.username}<br></br>{repo.location}<br></br>{repo.email}</div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default Shop

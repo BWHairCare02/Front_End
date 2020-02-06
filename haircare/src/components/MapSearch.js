@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-
+import Shop from './Info/Shop';
 // API
 import { yelpApi } from "../axios/yelpapi";
-
+import styled from "styled-components";
 // map
 
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
@@ -16,7 +16,16 @@ import ReactMapGl, { Marker, Popup } from "react-map-gl";
 // Image
 import icon from "../../src/svg.svg";
 import { LOCATION_CUSTOMErR } from "../actions";
-
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid rgb(195, 116, 51);
+  color: rgb(195, 116, 51);
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+  font-size: 1rem;
+  border-radius: 15px;
+`;
 const MapSearch = () => {
   // map token
   const mapBoxToken =
@@ -57,10 +66,10 @@ const MapSearch = () => {
   }, [newLocation]);
   return (
     <div className="search-map">
-      <img
-        style={{ "-webkit-user-select": "none",margin: "auto"}}
-        src="https://www.cssportal.com/form-elements/images/search.png"
-      ></img>
+       <input type="text" name="customer-description" placeholder="Search Stylist..." required></input>
+       <Button primary type="submit">
+          Log In
+        </Button>
       <ReactMapGl
         {...viewport}
         className="map"
@@ -82,6 +91,7 @@ const MapSearch = () => {
           );
         })}
       </ReactMapGl>
+      <Shop />
     </div>
   );
 };
