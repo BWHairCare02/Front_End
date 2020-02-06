@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import FileInput from '../FileInput';
+import styled from "styled-components";
 import {
   postCustomer,
   updateLocation,
@@ -9,6 +10,14 @@ import {
   updateSignupPass,
   updateSignupUser
 } from "../../actions";
+
+const Container = styled.div`
+  text-align: center;
+  margin:0 auto;
+  margin-top: 20%;
+  width:50%;
+  
+`;
 class CustomerSignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +38,7 @@ class CustomerSignUpForm extends React.Component {
       );
     } else {
       return (
-        
+        <Container>
       <form action="send_mail" method="post">
         {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} profile
         <div><input type="text" name="customer-username" required></input>
@@ -69,6 +78,7 @@ class CustomerSignUpForm extends React.Component {
         
       </div>
     </form>
+    </Container>
     )
     }
   }
