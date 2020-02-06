@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/Login';
@@ -18,12 +18,12 @@ const Button = styled.button`
 const Dashboard = () => {
     return (
         <div>
-            <Button primary type="submit">
+            {/* <Button primary type="submit">
           Stylist Login
         </Button>
         <Button primary type="submit">
           Customer Login
-          </Button>
+          </Button> */}
           <h3>Dashboard</h3>
       <p>
         conditionally renders customer profile and stylist profile with an if

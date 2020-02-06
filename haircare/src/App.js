@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./components/Login";
-
+import SignUp from '../src/components/SignUp/SignUp';
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -33,10 +33,10 @@ function App(props) {
         <Switch>
           {/* <Route path="/" exact /> */}
           <Route exact path="/" component={Login} />
-          <Route component={Login} />
+          {/* <Route component={Login} /> */}
           {/* <Route path="/login" component={StylistForm} /> */}
           {/* <Route component={StylistForm} /> */}
-          <Route path="/signup" component={SignUpForm} />
+          {/* <Route path="/signup" component={SignUpForm} /> */}
          
           <Route path="/CustomerProfile" exact component={CustomerProfile} />
           <Route path="/search" exact component={SearchStylist} />
@@ -57,10 +57,10 @@ function App(props) {
         passName="passStylist"
       /> */}
       </div>
-      <Link to='/protected'>Protected </Link>
-      <Link to='/protected'>Protected </Link>
+      <Route path="/signup" component={SignUp} />
+      <Link to='/protected'>Dashboard </Link>
       <PrivateRoute exact path='/protected' component={Dashboard} />
-      <PrivateRoute exact path='/protected' component={DashboardForm} />
+      
     </Router>
   );
 }

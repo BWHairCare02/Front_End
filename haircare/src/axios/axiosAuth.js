@@ -10,3 +10,4 @@ export const axiosAuth = () => {
     }
   });
 };
+export default axiosAuth;
