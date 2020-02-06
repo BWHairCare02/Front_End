@@ -1,13 +1,13 @@
 import React from "react";
 
 ////////Sign Up
-import StylistSignUpForm from "./StylistSignUpForm";
+import CustomerSignUpForm from "./SignUpForm";
 
 export default function signUp() {
   return (
     <div>
-      SignUp Stylist
-      <StylistSignUpForm />
+      
+      <CustomerSignUpForm />
     </div>
   );
 }
