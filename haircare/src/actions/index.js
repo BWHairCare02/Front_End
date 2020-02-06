@@ -60,7 +60,7 @@ export const updateLocation = location => dispatch => {
 };
 export const updateEmail = email => dispatch => {
   dispatch(customerEmail(email)); /// UPDATE EMAIL/////
-};
+}; 
 export const updateUserName = username => dispatch => {
   dispatch(customerUserName(username)); /// UPDATE USER/////
 };
