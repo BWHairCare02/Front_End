@@ -21,7 +21,10 @@ import {
 
 const Container = styled.div`
   text-align: center;
+  margin:0 auto;
   margin-top: 20%;
+  width:50%;
+  
 `;
 
 const Button = styled.button`
@@ -111,7 +114,7 @@ const Login = props => {
   const inputPass = props.admin === false ? "passStylist" : "password";
 
   return (
-    // <Container>
+    <Container>
     <div>
       <h1>Welcome Please Sign-In</h1>
       <form
@@ -146,6 +149,7 @@ const Login = props => {
         <Link to="/shop"> costumer profile</Link>
       </form>
     </div>
+    </Container>
   );
 };
 

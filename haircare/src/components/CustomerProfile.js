@@ -25,7 +25,7 @@ class CustomerProfile extends React.Component {
       return (
         
       <form action="send_mail" method="post">
-        {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} sign up
+        {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} customer sign up
         <div><input type="text" name="customer-username" required></input>
             <label for="email">Username</label></div>
 
@@ -34,6 +34,7 @@ class CustomerProfile extends React.Component {
       	  <label for="email">Email</label>
       </div>
 
+
       {/* <div>
         <input type="text" name="customer-description" placeholder="Search Stylist..." required></input>
         <label for="message">Search Stylist</label>
@@ -41,8 +42,8 @@ class CustomerProfile extends React.Component {
           {/* <div><input type="text" name="customer-username" required></input>
             <label for="email">Username</label></div> */}
 
-          {/* <div><input type="password" name="customer-password" required></input>
-            <label for="email">Password</label></div> */}
+          <div><input type="password" name="customer-password" required></input>
+            <label for="email">Password</label></div>
           
       <div>
         <input type="text" name="customer-description" required></input>
