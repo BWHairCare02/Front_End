@@ -1,24 +1,27 @@
-import React, { Component, useState } from "react";
-import axios from "axios";
-import axiosAuth from "../axios/axiosAuth";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
+import React, { Component, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SignUp from './SignUp/SignUp';
+import axios from 'axios';
+import axiosAuth from '../axios/axiosAuth';
+import PrivateRoute from "./PrivateRoute";
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
   postCustomer,
   updateLocation,
   updateEmail,
   updateSignupPass,
   updateSignupUser
-} from "../actions/index";
-
+} from '../actions/index';
+import SignUpForm from './SignUp/SignUpForm';
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
   margin-top: 20%;
   width: 50%;
 `;
+
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
@@ -32,8 +35,8 @@ const Button = styled.button`
 class Login extends Component {
   state = {
     credentials: {
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     }
   };
   handleChange = e => {
@@ -50,12 +53,12 @@ class Login extends Component {
       authAxios
         .post(`http://localhost:5000/api/login`, payload)
         .then(res => {
-          console.log("login", res);
-          localStorage.setItem("token", res.data.payload);
-          this.history.push("/protected");
+          console.log('login', res);
+          localStorage.setItem('token', res.data.payload);
+          this.history.push('/protected');
         })
         .catch(err => {
-          console.log("this is login error", err);
+          console.log('this is login error', err);
         });
     };
   };
@@ -64,39 +67,40 @@ class Login extends Component {
       <div>
         <form onSubmit={this.login}>
           <input
-            type="text"
-            name="username"
-            placeholder="username"
+            type='text'
+            name='username'
+            placeholder='username'
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
           <input
-            type="password"
-            name="password"
-            placeholder="password"
+            type='password'
+            name='password'
+            placeholder='password'
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-
+          <button type='submit'>Log In</button>
           <Button primary type="submit">
-            Log In
-          </Button>
-          <Button primary type="submit">
-            Sign up
-          </Button>
+          Login
+        </Button>
+        {/* <Button primary type="submit">
+          Sign Up
+          </Button> */}
+          {/* <Link path="/signup" component={SignUp}/> */}
+          {/* <Button><Route path="/signup" component={SignUp} />Sign Up</Button> */}
+         <Button> <Link to="/signup"> Sign Up</Link></Button>
+          {/* <Route path="/signup" component={Login} /> */}
         </form>
       </div>
     );
   }
 }
-
 const mapDispatchToProps = {
   postCustomer,
   updateLocation,
   updateEmail,
-
   updateSignupPass,
   updateSignupUser
 };
-
 export default connect(state => state, mapDispatchToProps)(Login);
