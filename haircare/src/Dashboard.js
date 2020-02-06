@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import Login from './components/Login';
+import SignUp from './components/SignUp/SignUp';
 
 const Button = styled.button`
   background: transparent;
@@ -28,8 +29,8 @@ const Dashboard = () => {
         conditionally renders customer profile and stylist profile with an if
         statement
       </p>
-      <Route path="/signup" component={signupcustomer} />
-          <Route path="/signup" component={signupstylist} />
+      <Route path="/signup" component={Login} />
+          <Route path="/signup" component={Login} />
         </div>
     )
 }
