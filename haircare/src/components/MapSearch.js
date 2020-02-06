@@ -15,14 +15,14 @@ import ReactMapGl, { Marker, Popup } from "react-map-gl";
 
 // Image
 import icon from "../../src/svg.svg";
-import { LOCATION_CUSTOMErR } from "../actions";
+import { LOCATION_CUSTOMER } from "../actions";
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
   border: 2px solid rgb(195, 116, 51);
   color: rgb(195, 116, 51);
   margin: 0.5em 1em;
-  padding: 0.25em 1em;
+  padding: 0.25em 1em;+
   font-size: 1rem;
   border-radius: 15px;
 `;

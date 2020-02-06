@@ -36,6 +36,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
   font-size: 2rem;
   border-radius: 15px;
+  text-decoration:none;
 `;
 
 const Login = props => {
@@ -93,13 +94,13 @@ const Login = props => {
       ? props.stylistInput["password"]
       : props.userInput["password"];
 
-  const handleUserChange = () => e => {
+  const handleUserChange = (props) => e => {
     e.preventDefault();
     props.status === false
       ? props.updateStylistUser(e.target.value)
       : props.updateUserName(e.target.value);
   };
-  const handlePassChange = () => e => {
+  const handlePassChange = (props) => e => {
     e.preventDefault();
 
     props.status === false
@@ -139,14 +140,15 @@ const Login = props => {
           onChange={handlePassChange(inputPass)}
         />
 
-        <Button primary type="submit">
+         <Button primary type="submit">
           Log In
         </Button>
-        <Button primary type="submit">
+        {/* <Button primary type="submit">
           Sign Up
-        </Button>
-        <Link to="/signup"> Sign Up</Link>
-        <Link to="/shop"> costumer profile</Link>
+        </Button>  */}
+
+        <Link className='SignUpButton' to="/signup"> Sign Up</Link>
+        
       </form>
     </div>
     </Container>
