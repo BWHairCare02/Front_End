@@ -4,7 +4,6 @@ import axiosAuth from "../axios/axiosAuth";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 import {
   stylistFalse,
   stylistTrue,
@@ -18,14 +17,12 @@ import {
   updateSignupPass,
   updateSignupUser
 } from "../actions/index";
-
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
   margin-top: 20%;
   width: 50%;
 `;
-
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
@@ -35,8 +32,8 @@ const Button = styled.button`
   padding: 0.25em 1em;
   font-size: 2rem;
   border-radius: 15px;
+  text-decoration: none;
 `;
-
 const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the  route
@@ -54,7 +51,6 @@ const Login = props => {
         console.log("this is login error", err);
       });
   };
-
   const handleLogin = e => {
     e.preventDefault();
     let holdInputs = {};
@@ -82,7 +78,6 @@ const Login = props => {
       props.stylistTrue();
     }
   };
-
   const usernameStateValue = props =>
     props.greetName === "stylist"
       ? props.stylistInput["username"]
@@ -91,27 +86,22 @@ const Login = props => {
     props.greetName === "stylist"
       ? props.stylistInput["password"]
       : props.userInput["password"];
-
-  const handleUserChange = () => e => {
+  const handleUserChange = props => e => {
     e.preventDefault();
     props.status === false
       ? props.updateStylistUser(e.target.value)
       : props.updateUserName(e.target.value);
   };
-  const handlePassChange = () => e => {
+  const handlePassChange = props => e => {
     e.preventDefault();
-
     props.status === false
       ? props.updateStylistPass(e.target.value)
       : props.updatePassWord(e.target.value);
   };
   console.log("this is props.stylistInput", props.stylistInput);
-
   console.log("this is props.userInput", props.userInput);
-
   const inputName = props.admin === false ? "stylist" : "username";
   const inputPass = props.admin === false ? "passStylist" : "password";
-
   return (
     <Container>
       <div>
@@ -128,7 +118,6 @@ const Login = props => {
             value={JSON.stringify(usernameStateValue)}
             onChange={handleUserChange(inputName)}
           />
-
           <label name={props.greetName}>Password</label>
           <input
             onClick={stylistStatus}
@@ -137,21 +126,21 @@ const Login = props => {
             value={JSON.stringify(passwordStateValue)}
             onChange={handlePassChange(inputPass)}
           />
-
           <Button primary type="submit">
             Log In
           </Button>
-          <Button primary type="submit">
+          {/* <Button primary type="submit">
+          Sign Up
+        </Button>  */}
+          <Link className="SignUpButton" to="/signup">
+            {" "}
             Sign Up
-          </Button>
-          <Link to="/signup"> Sign Up</Link>
-          <Link to="/shop"> costumer profile</Link>
+          </Link>
         </form>
       </div>
     </Container>
   );
 };
-
 const mapDispatchToProps = {
   successLoad,
   postCustomer,
@@ -165,5 +154,4 @@ const mapDispatchToProps = {
   updateSignupPass,
   updateSignupUser
 };
-
 export default connect(state => state, mapDispatchToProps)(Login);

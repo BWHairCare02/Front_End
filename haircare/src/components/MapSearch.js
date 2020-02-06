@@ -19,7 +19,7 @@ const Button = styled.button`
   color: rgb(195, 116, 51);
   margin: 0.5em 1em;
   padding: 0.25em 1em;
-  font-size: 1rem;
+  +font-size: 1rem;
   border-radius: 15px;
 `;
 const MapSearch = () => {
@@ -82,7 +82,7 @@ const MapSearch = () => {
               latitude={location.coordinates.latitude}
               longitude={location.coordinates.longitude}
             >
-              <button className="icon" onclick={() => setSelected(location)}>
+              <button className="icon" onClick={() => setSelected(location)}>
                 <img src={icon} alt="hair" className="icon" />
               </button>
             </Marker>

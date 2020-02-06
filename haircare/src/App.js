@@ -34,7 +34,7 @@ function App(props) {
 
           <Route path="/signup" component={signupcustomer} />
           <Route path="/signup" component={signupstylist} />
-          <Route path="/shop" exact component={CustomerProfile} />
+          <Route path="/CustomerProfile" exact component={CustomerProfile} />
           <Route path="/search" exact component={SearchStylist} />
           <PrivateRoute path="/edit/user"></PrivateRoute>
           <PrivateRoute path="/edit/stylist">
