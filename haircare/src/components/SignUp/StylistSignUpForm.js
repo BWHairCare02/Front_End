@@ -68,7 +68,7 @@ function StylistSignUpForm(props) {
             )
           }
         >
-          Make Me Customer!
+          Make Me a Stylist!
         </button>
       </form>
     </div>

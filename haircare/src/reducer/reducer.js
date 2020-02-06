@@ -30,7 +30,7 @@ const initialState = {
   email: "",
   signupUsername: "",
   signupPassword: "",
-  //  Stylist
+  //  user
   userInput: {
     username: "",
     password: "",

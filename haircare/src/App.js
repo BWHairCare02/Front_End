@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { fetchStylist } from "./actions/index";
 // import { Route } from "react-router-dom";
 import CustomerProfile from "./components/CustomerProfile";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./Utilities/PrivateRoute";
 import EditStylistForm from "./components/Stylist/EditStylistForm";
 import StylistForm from "./components/Stylist/StylistForm";
 import ItemDetail from "./components/Info/ItemDetail";
@@ -31,28 +31,17 @@ function App(props) {
         <Switch>
           {/* <Route path="/" exact /> */}
           <Route exact path="/" component={Login} />
-          {/* <Route path="/login" component={StylistForm} /> */}
-          {/* <Route component={StylistForm} /> */}
+
           <Route path="/signup" component={signupcustomer} />
           <Route path="/signup" component={signupstylist} />
           <Route path="/shop" exact component={CustomerProfile} />
           <Route path="/search" exact component={SearchStylist} />
-          {/* <Route path="/Meet The Stylist" component={Shop} /> */}
-
           <PrivateRoute path="/edit/user"></PrivateRoute>
           <PrivateRoute path="/edit/stylist">
             <EditStylistForm />
             <p>Edit</p>
           </PrivateRoute>
         </Switch>
-        {/* <Route path="/dashboard" component={Dashboard} /> */}
-        {/* stylist
-      <Login
-        {...props}
-        status={false}
-        greetName="stylist"
-        passName="passStylist"
-      /> */}
       </div>
     </Router>
   );

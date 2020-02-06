@@ -21,10 +21,9 @@ import {
 
 const Container = styled.div`
   text-align: center;
-  margin:0 auto;
+  margin: 0 auto;
   margin-top: 20%;
-  width:50%;
-  
+  width: 50%;
 `;
 
 const Button = styled.button`
@@ -115,40 +114,40 @@ const Login = props => {
 
   return (
     <Container>
-    <div>
-      <h1>Welcome Please Sign-In</h1>
-      <form
-        onSubmit={handleLogin}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <label name={props.greetName}>Username</label>
-        <input
-          onClick={stylistStatus}
-          type="text"
-          name={props.greetName}
-          value={JSON.stringify(usernameStateValue)}
-          onChange={handleUserChange(inputName)}
-        />
+      <div>
+        <h1>Welcome Please Sign-In</h1>
+        <form
+          onSubmit={handleLogin}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <label name={props.greetName}>Username</label>
+          <input
+            onClick={stylistStatus}
+            type="text"
+            name={props.greetName}
+            value={JSON.stringify(usernameStateValue)}
+            onChange={handleUserChange(inputName)}
+          />
 
-        <label name={props.greetName}>Password</label>
-        <input
-          onClick={stylistStatus}
-          type="password"
-          name={props.passName}
-          value={JSON.stringify(passwordStateValue)}
-          onChange={handlePassChange(inputPass)}
-        />
+          <label name={props.greetName}>Password</label>
+          <input
+            onClick={stylistStatus}
+            type="password"
+            name={props.passName}
+            value={JSON.stringify(passwordStateValue)}
+            onChange={handlePassChange(inputPass)}
+          />
 
-        <Button primary type="submit">
-          Log In
-        </Button>
-        <Button primary type="submit">
-          Sign Up
-        </Button>
-        <Link to="/signup"> Sign Up</Link>
-        <Link to="/shop"> costumer profile</Link>
-      </form>
-    </div>
+          <Button primary type="submit">
+            Log In
+          </Button>
+          <Button primary type="submit">
+            Sign Up
+          </Button>
+          <Link to="/signup"> Sign Up</Link>
+          <Link to="/shop"> costumer profile</Link>
+        </form>
+      </div>
     </Container>
   );
 };
