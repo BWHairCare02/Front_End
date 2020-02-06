@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import axiosAuth from "../axios/axiosAuth";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 import {
-  stylistFalse,
-  stylistTrue,
-  fetchStylist,
-  stylistPass,
-  stylistUser,
-  successLoad,
   postCustomer,
   updateLocation,
   updateEmail,
   updateSignupPass,
   updateSignupUser
 } from "../actions/index";
+
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
@@ -32,126 +28,75 @@ const Button = styled.button`
   padding: 0.25em 1em;
   font-size: 2rem;
   border-radius: 15px;
-  text-decoration: none;
 `;
-const Login = props => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the  route
-  const login = payload => {
-    const authAxios = axiosAuth();
-    authAxios
-      .post(`http://localhost:5000/api/login`, payload)
-      .then(res => {
-        console.log("this is res.data", res);
-        localStorage.setItem("token", res.data.token);
-        successLoad();
-        return props.history.push("/dashboard");
-      })
-      .catch(err => {
-        console.log("this is login error", err);
-      });
-  };
-  const handleLogin = e => {
-    e.preventDefault();
-    let holdInputs = {};
-    if (props.stylist === false) {
-      holdInputs = {
-        username: props.stylistInput["username"],
-        password: props.stylistInput["password"]
-      };
-    } else {
-      holdInputs = {
-        username: props.userInput["username"],
-        password: props.userInput["password"]
-      };
-    }
-    // fix
-    console.log("this is holding", holdInputs);
-    login(holdInputs);
-    props.fetchStylist();
-  };
-  // Fix
-  let stylistStatus = () => {
-    if (props.status == false) {
-      props.stylistFalse();
-    } else {
-      props.stylistTrue();
+class Login extends Component {
+  state = {
+    credentials: {
+      username: "",
+      password: ""
     }
   };
-  const usernameStateValue = props =>
-    props.greetName === "stylist"
-      ? props.stylistInput["username"]
-      : props.userInput["username"];
-  const passwordStateValue = props =>
-    props.greetName === "stylist"
-      ? props.stylistInput["password"]
-      : props.userInput["password"];
-  const handleUserChange = props => e => {
-    e.preventDefault();
-    props.status === false
-      ? props.updateStylistUser(e.target.value)
-      : props.updateUserName(e.target.value);
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
   };
-  const handlePassChange = props => e => {
-    e.preventDefault();
-    props.status === false
-      ? props.updateStylistPass(e.target.value)
-      : props.updatePassWord(e.target.value);
+  login = e => {
+    const login = payload => {
+      const authAxios = axiosAuth();
+      authAxios
+        .post(`http://localhost:5000/api/login`, payload)
+        .then(res => {
+          console.log("login", res);
+          localStorage.setItem("token", res.data.payload);
+          this.history.push("/protected");
+        })
+        .catch(err => {
+          console.log("this is login error", err);
+        });
+    };
   };
-  console.log("this is props.stylistInput", props.stylistInput);
-  console.log("this is props.userInput", props.userInput);
-  const inputName = props.admin === false ? "stylist" : "username";
-  const inputPass = props.admin === false ? "passStylist" : "password";
-  return (
-    <Container>
+  render() {
+    return (
       <div>
-        <h1>Welcome Please Sign-In</h1>
-        <form
-          onSubmit={handleLogin}
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <label name={props.greetName}>Username</label>
+        <form onSubmit={this.login}>
           <input
-            onClick={stylistStatus}
             type="text"
-            name={props.greetName}
-            value={JSON.stringify(usernameStateValue)}
-            onChange={handleUserChange(inputName)}
+            name="username"
+            placeholder="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
           />
-          <label name={props.greetName}>Password</label>
           <input
-            onClick={stylistStatus}
             type="password"
-            name={props.passName}
-            value={JSON.stringify(passwordStateValue)}
-            onChange={handlePassChange(inputPass)}
+            name="password"
+            placeholder="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
           />
+
           <Button primary type="submit">
             Log In
           </Button>
-          {/* <Button primary type="submit">
-          Sign Up
-        </Button>  */}
-          <Link className="SignUpButton" to="/signup">
-            {" "}
-            Sign Up
-          </Link>
+          <Button primary type="submit">
+            Sign up
+          </Button>
         </form>
       </div>
-    </Container>
-  );
-};
+    );
+  }
+}
+
 const mapDispatchToProps = {
-  successLoad,
   postCustomer,
   updateLocation,
   updateEmail,
-  stylistPass,
-  stylistUser,
-  stylistFalse,
-  stylistTrue,
-  fetchStylist,
+
   updateSignupPass,
   updateSignupUser
 };
+
 export default connect(state => state, mapDispatchToProps)(Login);
