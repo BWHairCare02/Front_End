@@ -1,3 +1,16 @@
+.SignUpButton{
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid rgb(195, 116, 51);
+  color: rgb(195, 116, 51);
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+  font-size: 2rem;
+  border-radius: 15px;
+  text-decoration:none;
+}
+
+
 .App {
   text-align: center;
   /* background-color: rgb(228,206,221); */

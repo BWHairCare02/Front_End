@@ -1,8 +1,23 @@
 import React from "react";
-import FileInput from "./FileInput";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Signupcustomer from '../components/SignUp/signupcustomer'
+import FileInput from './FileInput';
+import styled from "styled-components";
+import {
+  postCustomer,
+  updateLocation,
+  updateEmail,
+  updateSignupPass,
+  updateSignupUser
+} from "../actions";
 
+const Container = styled.div`
+  text-align: center;
+  margin:0 auto;
+  margin-top: 20%;
+  width:50%;
+  
+`;
 class CustomerProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -23,9 +38,9 @@ class CustomerProfile extends React.Component {
       );
     } else {
       return (
-        
+        <Container>
       <form action="send_mail" method="post">
-        {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} customer sign up
+        {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/} Profile
         <div><input type="text" name="customer-username" required></input>
             <label for="email">Username</label></div>
 
@@ -34,141 +49,47 @@ class CustomerProfile extends React.Component {
       	  <label for="email">Email</label>
       </div>
 
-
-      {/* <div>
+      <div>
         <input type="text" name="customer-description" placeholder="Search Stylist..." required></input>
         <label for="message">Search Stylist</label>
-      </div> <button type="submit">Search Stylist In Your Area</button> */}
+      </div> <button type="submit">Search Stylist In Your Area</button>
           {/* <div><input type="text" name="customer-username" required></input>
             <label for="email">Username</label></div> */}
 
-          <div><input type="password" name="customer-password" required></input>
-            <label for="email">Password</label></div>
+          {/* <div><input type="password" name="customer-password" required></input>
+            <label for="email">Password</label></div> */}
           
       <div>
-        <input type="text" name="customer-description" required></input>
-        <label for="message">Location</label>
+        <textarea type="text" name="customer-description" required></textarea>
+        <label for="message">Description</label>
       </div>
-      
+      <FileInput />
       <div>
         <button onClick={this.handleClick} type="submit">
         	<i class="material-icons">Update Profile</i>
         </button>
         <Link to="/search"> search stylist</Link>
-        {/* <button onClick={this.handleClick} type="submit">
+        <button onClick={this.handleClick} type="submit">
         	<i class="material-icons">add</i>
         </button>
         <button onClick={this.handleClick} type="submit">
         	<i class="material-icons">delete</i>
-        </button> */}
+        </button>
         
       </div>
     </form>
+    </Container>
     )
     }
   }
 }
+const mapDispatchToProps = {
+  postCustomer,
+  updateLocation,
+  updateEmail,
 
+  updateSignupPass,
+  updateSignupUser
+};
 
-// function CustomerProfile(props) {
-//   const handleNewLocation = e => {
-//     props.updateLocation(e.target.value);
-//   };
-//   const handleNewEmail = e => {
-//     props.updateEmail(e.target.value);
-//   };
-//   const handleNewUsername = e => {
-//     props.updateSignupUser(e.target.value);
-//   };
-//   const NewDescription = e => {
-//     props.updateDescription(e.target.value);
-//   };
-//   const NewPicUpload = e => {
-//     props.NewPic(e.target.value);
-//   };
-//   const StylistId = e => {
-//     props.NewPic(e.target.value);
-//   };
-//   return (
-//     <div>
-//       Profile
-//       <form>
-//         <label name="customer-username">Username</label>
-//         <input
-//           className="customerProfile"
-//           type="text"
-//           name="customer-username"
-//           value={props.signupUsername}
-//           onChange={handleNewUsername}
-//         />
-//         <label name="customer-email">Email</label>
-//         <input
-//           className="customerProfile"
-//           type="text"
-//           name="customer-email"
-//           value={props.email}
-//           onChange={handleNewEmail}
-//         />
-
-//         <label name="customer-location">Search Stylist</label>
-//         <input
-//           className="CustomerProfile"
-//           type="text"
-//           name="customer-location"
-//           placeholder="Search Stylist..."
-//           value={props.location}
-//           onChange={handleNewLocation}
-//         />
-//         <br></br>
-//         <button type="submit">Search Stylist In Your Area</button>
-//         <br></br>
-//         <label name="customer-description">Description</label>
-//         <br></br>
-//         <textarea
-//           type="text"
-//           rows="10"
-//           cols="60"
-//           name="Tell us what you think"
-//           value={props.description}
-//           onChange={NewDescription}
-//         />
-//         <br></br>
-
-//         <FileInput className="NewPic" />
-//         <button
-//           type="button"
-//           onClick={() =>
-//             props.postMember(
-//               props.location,
-//               props.email,
-//               props.signupUsername,
-//               // props.signupPassword,
-//               props.description,
-//               props.uploadpic,
-//               props.StylistId
-//             )
-//           }
-//         >
-//           Add
-//         </button>
-//         <button
-//           type="button"
-//           onClick={() =>
-//             props.deleteMember(
-//               props.location,
-//               props.email,
-//               props.signupUsername,
-//               props.description,
-//               props.uploadpic
-//             )
-//           }
-//         >
-//           Delete
-//         </button>
-//         <Link to="/search"> search stylist</Link>
-//       </form>
-//     </div>
-//   );
-// }
-
-export default CustomerProfile;
+export default connect(state => state, mapDispatchToProps)(CustomerProfile);

@@ -35,7 +35,7 @@ function App(props) {
           {/* <Route component={StylistForm} /> */}
           <Route path="/signup" component={signupcustomer} />
           <Route path="/signup" component={signupstylist} />
-          <Route path="/shop" exact component={CustomerProfile} />
+          <Route path="/CustomerProfile" exact component={CustomerProfile} />
           <Route path="/search" exact component={SearchStylist} />
           {/* <Route path="/Meet The Stylist" component={Shop} /> */}
 
