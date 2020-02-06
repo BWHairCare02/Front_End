@@ -1,9 +1,9 @@
 // import React from “react”;
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axiosAuth from "../axios/axiosAuth";
-
-import Dashboard from '../Dashboard';
-
+import SignUpForm from "./SignUp/SignUpForm";
+import Dashboard from "../Dashboard";
+import HairUser from "./HairUser";
 
 class DashboardForm extends Component {
   state = {
@@ -14,7 +14,7 @@ class DashboardForm extends Component {
   }
   getData = () => {
     axiosAuth()
-      .get('/')
+      .get("/")
       .then(res => {
         console.log(res);
         this.setState({
@@ -27,7 +27,7 @@ class DashboardForm extends Component {
   };
   add = customer => {
     axiosAuth()
-      .post('/hairuser', customer)
+      .post("/hairuser", customer)
       .then(res => {
         // this.getData();
         console.log(res);
@@ -39,9 +39,9 @@ class DashboardForm extends Component {
   render() {
     return (
       <div>
-        <Dashboard add={this.add} />
+        <SignUpForm add={this.add} />
         {this.state.customer.map(customer => {
-          return <Dashboard key={customer.id} data={customer} />;
+          return <HairUser key={customer.id} data={customer} />;
         })}
       </div>
     );

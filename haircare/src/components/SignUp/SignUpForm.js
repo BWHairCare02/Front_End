@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-
-
+import React, { Component } from "react";
 
 class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
       customer: {
-        userName: '',
-        password: '',
-        email:'',
-        location: ''
+        userName: "",
+        password: "",
+        email: "",
+        location: ""
       }
     };
   }
@@ -25,18 +23,18 @@ class SignUpForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (
-      this.state.customer.userName !== '' &&
-      this.state.customer.password !== '' &&
-      this.state.customer.email !== '' &&
-      this.state.customer.location !== '' 
+      this.state.customer.userName !== "" &&
+      this.state.customer.password !== "" &&
+      this.state.customer.email !== "" &&
+      this.state.customer.location !== ""
     ) {
-      this.props.addcustomer(this.state.customer);
+      this.props.addCustomer(this.state.customer);
       this.setState({
         customer: {
-          username: '',
-          password: '',
-          email: '',
-          location:''
+          username: "",
+          password: "",
+          email: "",
+          location: ""
         }
       });
     }
@@ -48,8 +46,8 @@ class SignUpForm extends Component {
         <div>
           <label>Username:</label>
           <input
-            type='text'
-            name='username'
+            type="text"
+            name="username"
             onChange={this.handleChange}
             value={this.state.userName}
           ></input>
@@ -57,8 +55,8 @@ class SignUpForm extends Component {
         <div>
           <label>Password:</label>
           <input
-            type='text'
-            name='password'
+            type="text"
+            name="password"
             onChange={this.handleChange}
             value={this.state.password}
           ></input>
@@ -66,8 +64,8 @@ class SignUpForm extends Component {
         <div>
           <label>Email:</label>
           <input
-            type='text'
-            name='email'
+            type="text"
+            name="email"
             onChange={this.handleChange}
             value={this.state.email}
           ></input>
@@ -75,13 +73,13 @@ class SignUpForm extends Component {
         <div>
           <label>Location:</label>
           <input
-            type='text'
-            name='location'
+            type="text"
+            name="location"
             onChange={this.handleChange}
             value={this.state.location}
           ></input>
         </div>
-        <button type='submit'> Add customer</button>
+        <button type="submit"> Add customer</button>
       </form>
     );
   }
