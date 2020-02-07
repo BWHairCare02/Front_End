@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
-  putStylist,
+  // putStylist,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
 } from "../../actions/index";
@@ -71,14 +71,15 @@ function EditStylistForm(props) {
         <Link to="/dashboard/user">
           <button
             type="button"
-            onClick={() =>
-              props.putStylist(
+            onClick={
+              (() =>
+                // props.putStylist(
                 props.location,
-                props.email,
-                props.signupUsername,
-                props.signupPassword,
-                props.description
-              )
+              props.email,
+              props.signupUsername,
+              props.signupPassword,
+              props.description)
+              // )
             }
           >
             EDIT USER!
@@ -90,9 +91,9 @@ function EditStylistForm(props) {
 }
 
 const mapDispatchToProps = {
-  putStylist,
+  // putStylist,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
 };

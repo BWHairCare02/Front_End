@@ -1,20 +1,20 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SignUp from './SignUp/SignUp';
-import axios from 'axios';
-import axiosAuth from '../axios/axiosAuth';
-import PrivateRoute from "./PrivateRoute";
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import SignUp from "./SignUp/SignUp";
+import axios from "axios";
+import axiosAuth from "../axios/axiosAuth";
+// import PrivateRoute from "./PrivateRoute";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import {
   postCustomer,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
-} from '../actions/index';
-import SignUpForm from './SignUp/SignUpForm';
+} from "../actions/index";
+import SignUpForm from "./SignUp/SignUpForm";
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
@@ -35,8 +35,8 @@ const Button = styled.button`
 class Login extends Component {
   state = {
     credentials: {
-      username: '',
-      password: ''
+      username: "",
+      password: ""
     }
   };
   handleChange = e => {
@@ -47,49 +47,53 @@ class Login extends Component {
       }
     });
   };
-  login = e => {
-    const login = payload => {
-      const authAxios = axiosAuth();
-      authAxios
-        .post(`http://localhost:5000/api/login`, payload)
-        .then(res => {
-          console.log('login', res);
-          localStorage.setItem('token', res.data.payload);
-          this.history.push('/protected');
-        })
-        .catch(err => {
-          console.log('this is login error', err);
-        });
-    };
+  handleSubmit = e => {
+    e.preventDefault();
+    const authAxios = axiosAuth();
+    authAxios
+      .post(`/customer/login`, this.state.credentials)
+      .then(res => {
+        console.log("login", res);
+        localStorage.setItem("token", res.data.payload);
+        this.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        console.log("this is login error", err);
+      });
+    console.log(this.state.credentials);
   };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={this.handleSubmit}>
           <input
-            type='text'
-            name='username'
-            placeholder='username'
+            type="text"
+            name="username"
+            placeholder="username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
           <input
-            type='password'
-            name='password'
-            placeholder='password'
+            type="password"
+            name="password"
+            placeholder="password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button type='submit'>Log In</button>
+          {/* <button type="submit">Log In</button> */}
           <Button primary type="submit">
-          Login
-        </Button>
-        {/* <Button primary type="submit">
+            Login
+          </Button>
+          {/* <Button primary type="submit">
           Sign Up
           </Button> */}
           {/* <Link path="/signup" component={SignUp}/> */}
           {/* <Button><Route path="/signup" component={SignUp} />Sign Up</Button> */}
-         <Button> <Link to="/signup"> Sign Up</Link></Button>
+          <Button>
+            {" "}
+            <Link to="/signup"> Sign Up</Link>
+          </Button>
           {/* <Route path="/signup" component={Login} /> */}
         </form>
       </div>
@@ -99,7 +103,7 @@ class Login extends Component {
 const mapDispatchToProps = {
   postCustomer,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
 };

@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from './components/Login';
-import SignUp from './components/SignUp/SignUp';
+import Login from "./components/Login";
+import SignUp from "./components/SignUp/SignUp";
+import { Link } from "react-router-dom";
+import CustomerProfile from "./components/Reviews/CustomerProfile";
+import CustomerReview from "./components/Reviews/CustomerReview";
 
 const Button = styled.button`
   background: transparent;
@@ -16,23 +19,27 @@ const Button = styled.button`
 `;
 
 const Dashboard = () => {
-    return (
-        <div>
-            {/* <Button primary type="submit">
+  return (
+    <div>
+      {/* <Button primary type="submit">
           Stylist Login
         </Button>
         <Button primary type="submit">
           Customer Login
           </Button> */}
-          <h3>Dashboard</h3>
-      <p>
-        conditionally renders customer profile and stylist profile with an if
-        statement
-      </p>
+      <h3>Dashboard</h3>
+      <p>Welcome Customers and Stylist</p>
+      <Link to="/CustomerProfile">
+        <button>Customer</button>
+      </Link>
+      <Link to="/stylistprofile">
+        <button>Stylist</button>
+      </Link>
+      <CustomerReview />
       <Route path="/signup" component={Login} />
-          <Route path="/signup" component={Login} />
-        </div>
-    )
-}
+      <Route path="/signup" component={Login} />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

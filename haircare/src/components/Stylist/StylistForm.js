@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FileInput from "../FileInput";
 import { connect } from "react-redux";
-import { stylistFalse } from "../../actions";
+// import { stylistFalse } from "../../actions";
 import Login from "../Login";
 import { Link } from "react-router-dom";
 import EditStylistForm from "./EditStylistForm";
@@ -133,7 +133,7 @@ function StylistForm(props) {
 
 // export default StylistForm;
 const mapDispatchToProps = {
-  stylistFalse
+  // stylistFalse
 };
 
 export default connect(state => state, mapDispatchToProps)(StylistForm);

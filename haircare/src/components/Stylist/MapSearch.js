@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import Shop from "./Info/Shop";
+// import Shop from "./Info/Shop";
 // API
-import { yelpApi } from "../axios/yelpapi";
+import { yelpApi } from "../../../src/axios/yelpapi";
 import styled from "styled-components";
 // map
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
 // components
 // import SearchForm
 // Image
-import icon from "../../src/svg.svg";
-import { LOCATION_CUSTOMER } from "../actions";
+// import icon from "../../src/svg.svg";
+// import { LOCATION_CUSTOMER } from "../actions";
 const Button = styled.button`
   background: transparent;
   border-radius: 3px;
@@ -82,14 +82,14 @@ const MapSearch = () => {
               latitude={location.coordinates.latitude}
               longitude={location.coordinates.longitude}
             >
-              <button className="icon" onClick={() => setSelected(location)}>
+              {/* <button className="icon" onClick={() => setSelected(location)}>
                 <img src={icon} alt="hair" className="icon" />
-              </button>
+              </button> */}
             </Marker>
           );
         })}
       </ReactMapGl>
-      <Shop />
+      {/* <Shop /> */}
     </div>
   );
 };
@@ -100,5 +100,4 @@ export default MapSearch;
                 onClose={() => setSelected(null)}>
                   <PopupCard location={selected}/>  
                 </Popup>
-
             )} */

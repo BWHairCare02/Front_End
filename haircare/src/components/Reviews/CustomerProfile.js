@@ -1,15 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import FileInput from "./FileInput";
+import FileInput from "../FileInput";
 import styled from "styled-components";
+import axios from "axios";
 import {
   postCustomer,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
-} from "../actions";
+} from "../../actions";
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
@@ -29,6 +30,35 @@ class CustomerProfile extends React.Component {
       submitted: true
     });
   }
+  // deleteInfo = reviewId => {
+  //   console.log(this.state.submitted.id);
+  //   axios.delete(`/customer/${this.props.id}/reviews/${reviewId}`).then(res => {
+  //     console.log(res);
+  //     this.props.history.push("/");
+  //   });
+  // };
+
+  // componentDidMount() {
+  //   this.fetchInfo(this.props.match.params.id);
+  // }
+
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.match.params.id !== newProps.match.params.id) {
+  //     this.fetchInfo(newProps.match.params.id);
+  //   }
+  // }
+
+  // fetchInfo = id => {
+  //   axios
+  //     .put(`/customer/:customerId/reviews/:reviewId${id}`)
+  //     .then(res => this.setState({ id: res.data }))
+  //     .catch(err => console.log(err.response));
+  // };
+
+  // saveInfo = () => {
+  //   const update = this.props.update;
+  //   update(this.state.props.submitted);
+  // };
   render() {
     if (this.state.submitted) {
       return <h1>Thanks for contacting us</h1>;
@@ -36,16 +66,7 @@ class CustomerProfile extends React.Component {
       return (
         <Container>
           <form action="send_mail" method="post">
-            {/*id='contact-form' onClick={document.forms['contact-form'].submit('send_mail')}>*/}{" "}
             Profile
-            <div>
-              <input type="text" name="customer-username" required></input>
-              <label for="email">Username</label>
-            </div>
-            <div>
-              <input type="text" name="customer-email" required></input>
-              <label for="email">Email</label>
-            </div>
             <div>
               <input
                 type="text"
@@ -55,11 +76,7 @@ class CustomerProfile extends React.Component {
               ></input>
               <label for="message">Search Stylist</label>
             </div>{" "}
-            <button type="submit">Search Stylist In Your Area</button>
-            {/* <div><input type="text" name="customer-username" required></input>
-            <label for="email">Username</label></div> */}
-            {/* <div><input type="password" name="customer-password" required></input>
-            <label for="email">Password</label></div> */}
+            <Link to="/search"> search for stylist in your Area</Link>
             <div>
               <textarea
                 type="text"
@@ -70,16 +87,23 @@ class CustomerProfile extends React.Component {
             </div>
             <FileInput />
             <div>
-              <button onClick={this.handleClick} type="submit">
-                <i class="material-icons">Update Profile</i>
+              <button onClick={this.state.handleClick} type="submit">
+                {/* <i class="material-icons">Update Profile</i> */}
+                <div className="material-icons" onClick={this.props}>
+                  Save Profile
+                </div>
               </button>
-              <Link to="/search"> search stylist</Link>
+
               <button onClick={this.handleClick} type="submit">
                 <i class="material-icons">add</i>
               </button>
-              <button onClick={this.handleClick} type="submit">
+              {/* <button onClick={this.handleClick} type="submit">
                 <i class="material-icons">delete</i>
-              </button>
+              </button> */}
+
+              {/* <div className="save-button" onClick={this.props}>
+                Save
+              </div> */}
             </div>
           </form>
         </Container>
@@ -90,8 +114,13 @@ class CustomerProfile extends React.Component {
 const mapDispatchToProps = {
   postCustomer,
   updateLocation,
-  updateEmail,
+  // updateEmail,
   updateSignupPass,
   updateSignupUser
 };
-export default connect(state => state, mapDispatchToProps)(CustomerProfile);
+const mapStateToProps = state => {
+  return {
+    id: state.id
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerProfile);
